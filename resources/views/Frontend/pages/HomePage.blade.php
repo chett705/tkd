@@ -3,7 +3,7 @@
 @section('content')
     {{-- hero section --}}
     <div class="h-[93vh] bg-cover bg-center text-white relative"
-        style="background-image: url('https://wp-themes.com/wp-content/themes/production-factory/assets/images/banner-image.png');">
+        style="background-image: url('{{ asset('storage/' . $hero->media_url) }}');">
 
         <div class="absolute inset-0 bg-black/40"></div>
 
@@ -19,18 +19,18 @@
 
                 <div class="flex items-center gap-2">
                     <i class="fa-solid fa-phone text-black"></i>
-                    <p class="break-all">+855 12 590 666</p>
+                    <p class="break-all">{{ $contacts['phone']->value_en ?? '' }}</p>
                 </div>
 
                 <div class="flex items-center gap-2">
                     <i class="fa-solid fa-envelope text-black"></i>
-                    <p class="break-all">tkd.manufacturing89@gmail.com</p>
+                    <p class="break-all">{{ $contacts['email']->value_en ?? '' }}</p>
                 </div>
 
                 <div class="flex items-center gap-2 text-center md:text-left">
                     <i class="fa-solid fa-bullhorn text-black"></i>
                     <p class="text-xs md:text-sm lg:text-base">
-                        Delivering Industrial Excellence with Every Product.
+                        {{ $contacts['description']->value_en ?? '' }}
                     </p>
                 </div>
 
@@ -44,26 +44,31 @@
                 <h2
                     class="text-xl sm:text-2xl md:text-4xl lg:text-[44px]
                        leading-snug md:leading-tight font-bold break-words">
-                    Sustainable Rice-Flour Straws from Cambodia to the World
+                    {{ $hero->title_en }}
                 </h2>
 
                 <p class="text-sm sm:text-base md:text-lg lg:text-[22px] leading-relaxed">
-                    Eco-friendly, biodegradable, and durable alternatives to plastic straws.
+                    {{ $hero->subtitle_en }}
                 </p>
 
                 <!-- Buttons -->
                 <div class="flex flex-col sm:flex-row gap-3 w-full">
-                    <a href=""
-                        class="w-full sm:w-auto px-6 py-3 border border-[#ED1C24]
-                          bg-white text-[#ED1C24] font-semibold text-center">
-                        Get a Quote
-                    </a>
+                    @if ($hero->button_text_en)
+                        <a href={{ $hero->button_link_en }}
+                            class="w-full sm:w-auto px-6 py-3 border border-[#ED1C24]
+                          bg-white text-[#ED1C24] font-semibold text-center capitalize">
+                            {{ $hero->button_text_en }}
+                        </a>
+                    @endif
 
-                    <a href=""
-                        class="w-full sm:w-auto px-6 py-3 border border-[#ED1C24]
-                          bg-white text-[#ED1C24] font-semibold text-center">
-                        View Products
-                    </a>
+                    @if ($hero->button_text_km)
+                        <a href={{ $hero->button_link_km }}
+                            class="w-full sm:w-auto px-6 py-3 border border-[#ED1C24]
+                          bg-white text-[#ED1C24] font-semibold text-center capitalize">
+                            {{ $hero->button_text_km }}
+                        </a>
+                    @endif
+
                 </div>
             </div>
         </div>
@@ -92,105 +97,47 @@
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10">
 
-                <!-- CARD -->
-                <div class="group">
+                @foreach ($products as $item)
+                    <!-- CARD -->
+                    <div class="group">
 
-                    <div class="relative">
+                        <div class="relative">
 
-                        <img src="https://images.pexels.com/photos/6801215/pexels-photo-6801215.jpeg"
-                            class="w-full h-[220px] sm:h-[260px] md:h-[300px] object-cover">
-
-                        <!-- TOP BAR -->
-                        <div
-                            class="absolute top-[-10px] right-0 w-[85%] h-[22px] bg-[#0B0B54] z-50 transition-all duration-500 group-hover:w-[90%] group-hover:bg-[#ED1C24]
+                            <img src="{{ asset('storage/' . $item->image) }}"
+                                class="w-full h-[220px] sm:h-[260px] md:h-[300px] object-cover"
+                                alt="{{ $item->title_en ?? 'Product Image' }}">
+                            <!-- TOP BAR -->
+                            <div
+                                class="absolute top-[-10px] right-0 w-[85%] h-[22px] bg-[#0B0B54] z-50 transition-all duration-500 group-hover:w-[90%] group-hover:bg-[#ED1C24]
                         [clip-path:polygon(0_0,100%_0,100%_100%,10%_100%)]">
-                        </div>
+                            </div>
 
-                        <!-- BOTTOM BAR -->
-                        <div
-                            class="absolute bottom-[-10px] left-0 w-[85%] h-[22px] bg-[#0B0B54] z-50 transition-all duration-500 group-hover:w-[90%] group-hover:bg-[#ED1C24]
+                            <!-- BOTTOM BAR -->
+                            <div
+                                class="absolute bottom-[-10px] left-0 w-[85%] h-[22px] bg-[#0B0B54] z-50 transition-all duration-500 group-hover:w-[90%] group-hover:bg-[#ED1C24]
                         [clip-path:polygon(0_0,90%_0,100%_100%,0_100%)]">
+                            </div>
+
+                        </div>
+
+                        <!-- INFO -->
+                        <div class="flex flex-col justify-center items-center gap-3 py-6 px-4">
+
+                            <p class="font-semibold text-[17px] md:text-[19px] line-clamp-1">{{ $item->title_en }}</p>
+
+                            <p class="line-clamp-3 text-center text-sm md:text-base">
+                                {{ $item->description_en }}
+                            </p>
+
+                            <a href=""
+                                class="w-full text-center py-2 border bg-[#0B0B54] hover:bg-[#ED1C24] transition-all duration-500 text-white">
+                                Explore Product
+                            </a>
+
                         </div>
 
                     </div>
-
-                    <!-- INFO -->
-                    <div class="flex flex-col justify-center items-center gap-3 py-6 px-4">
-
-                        <p class="font-semibold text-[17px] md:text-[19px] line-clamp-1">Title</p>
-
-                        <p class="line-clamp-3 text-center text-sm md:text-base">
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores, nostrum perspiciatis nobis nemo doloribus dolore excepturi corporis voluptatem vel consectetur sint sequi voluptates repellat, quod, cupiditate ea totam dolor pariatur.
-                        </p>
-
-                        <a href=""
-                            class="w-full text-center py-2 border bg-[#0B0B54] hover:bg-[#ED1C24] transition-all duration-500 text-white">
-                            Explore Product
-                        </a>
-
-                    </div>
-
-                </div>
-
-                <!-- DUPLICATE CARD 2 -->
-                <div class="group">
-                    <div class="relative">
-                        <img src="https://images.pexels.com/photos/6801215/pexels-photo-6801215.jpeg"
-                            class="w-full h-[220px] sm:h-[260px] md:h-[300px] object-cover">
-
-                        <div
-                            class="absolute top-[-10px] right-0 w-[85%] h-[22px] bg-[#0B0B54] z-50
-                        transition-all duration-500 group-hover:w-[90%] group-hover:bg-[#ED1C24]
-                        [clip-path:polygon(0_0,100%_0,100%_100%,10%_100%)]">
-                        </div>
-
-                        <div
-                            class="absolute bottom-[-10px] left-0 w-[85%] h-[22px] bg-[#0B0B54] z-50
-                        transition-all duration-500 group-hover:w-[90%] group-hover:bg-[#ED1C24]
-                        [clip-path:polygon(0_0,90%_0,100%_100%,0_100%)]">
-                        </div>
-                    </div>
-
-                    <div class="flex flex-col items-center gap-3 py-6 px-4">
-                        <p class="font-semibold text-[17px] md:text-[19px]">Title</p>
-                        <p class="text-center text-sm md:text-base line-clamp-3">
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore ipsum cupiditate labore consequuntur, in at unde sed reiciendis repellat harum quae, dolor fugiat delectus aperiam, eius adipisci! Molestias, quidem inventore.
-                        </p>
-                        <a href="" class="w-full text-center py-2 bg-[#0B0B54] text-white hover:bg-[#ED1C24]">
-                            Explore Product
-                        </a>
-                    </div>
-                </div>
-
-                <!-- CARD 3 (same structure) -->
-                <div class="group">
-                    <div class="relative">
-                        <img src="https://images.pexels.com/photos/6801215/pexels-photo-6801215.jpeg"
-                            class="w-full h-[220px] sm:h-[260px] md:h-[300px] object-cover">
-
-                        <div
-                            class="absolute top-[-10px] right-0 w-[85%] h-[22px] bg-[#0B0B54] z-50
-                        transition-all duration-500 group-hover:w-[90%] group-hover:bg-[#ED1C24]
-                        [clip-path:polygon(0_0,100%_0,100%_100%,10%_100%)]">
-                        </div>
-
-                        <div
-                            class="absolute bottom-[-10px] left-0 w-[85%] h-[22px] bg-[#0B0B54] z-50
-                        transition-all duration-500 group-hover:w-[90%] group-hover:bg-[#ED1C24]
-                        [clip-path:polygon(0_0,90%_0,100%_100%,0_100%)]">
-                        </div>
-                    </div>
-
-                    <div class="flex flex-col items-center gap-3 py-6 px-4">
-                        <p class="font-semibold text-[17px] md:text-[19px]">Title</p>
-                        <p class="text-center text-sm md:text-base line-clamp-3">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi sequi a molestiae fuga consectetur nemo expedita voluptas. Pariatur, eius ullam maxime ipsa nihil deleniti sequi cupiditate repudiandae alias sed tempore?
-                        </p>
-                        <a href="" class="w-full text-center py-2 bg-[#0B0B54] text-white hover:bg-[#ED1C24]">
-                            Explore Product
-                        </a>
-                    </div>
-                </div>
+                @endforeach
 
             </div>
 
@@ -470,154 +417,153 @@
 
     {{-- faq --}}
     <div id="faqSection" class="relative bg-cover bg-top text-white transition-all duration-500"
-    style="background-image: url('https://wp-themes.com/wp-content/themes/production-factory/assets/images/section-img.png');">
+        style="background-image: url('https://wp-themes.com/wp-content/themes/production-factory/assets/images/section-img.png');">
 
-    <div class="absolute inset-0 bg-[#0B0B54]/75"></div>
+        <div class="absolute inset-0 bg-[#0B0B54]/75"></div>
 
-    <div class="relative z-10 container mx-auto px-5 lg:px-0 grid grid-cols-1 lg:grid-cols-2 gap-10 pt-20 pb-20">
+        <div class="relative z-10 container mx-auto px-5 lg:px-0 grid grid-cols-1 lg:grid-cols-2 gap-10 pt-20 pb-20">
 
-        <!-- LEFT -->
-        <div>
-            <p class="text-[17px] text-[#ED1C24] mb-3">
-                Frequently Asked Questions
-            </p>
+            <!-- LEFT -->
+            <div>
+                <p class="text-[17px] text-[#ED1C24] mb-3">
+                    Frequently Asked Questions
+                </p>
 
-            <p class="text-[26px] font-bold capitalize mb-3">
-                have any question for us?
-            </p>
+                <p class="text-[26px] font-bold capitalize mb-3">
+                    have any question for us?
+                </p>
 
-            <p class="text-sm md:text-base">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit...
-            </p>
+                <p class="text-sm md:text-base">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit...
+                </p>
 
-            <img src="https://wp-themes.com/wp-content/themes/production-factory/assets/images/FAQ.png"
-                class="mt-5 rounded-md w-full object-cover">
-        </div>
+                <img src="https://wp-themes.com/wp-content/themes/production-factory/assets/images/FAQ.png"
+                    class="mt-5 rounded-md w-full object-cover">
+            </div>
 
-        <!-- RIGHT -->
-        <div>
+            <!-- RIGHT -->
+            <div>
 
-            <div class="space-y-3">
+                <div class="space-y-3">
 
-                {{-- 6 VISIBLE FAQ --}}
-                <div class="border rounded-md p-4">
-                    <button class="faq-btn w-full flex justify-between font-semibold">
-                        What are your straws made from?
-                        <span>+</span>
-                    </button>
-                    <div class="faq-content hidden mt-3">
-                        Our straws are made from rice flour and tapioca starch.
-                    </div>
-                </div>
-
-                <div class="border rounded-md p-4">
-                    <button class="faq-btn w-full flex justify-between font-semibold">
-                        Are rice straws safe for hot drinks?
-                        <span>+</span>
-                    </button>
-                    <div class="faq-content hidden mt-3">
-                        Yes, safe for hot & cold drinks.
-                    </div>
-                </div>
-
-                <div class="border rounded-md p-4">
-                    <button class="faq-btn w-full flex justify-between font-semibold">
-                        Do you offer bulk orders?
-                        <span>+</span>
-                    </button>
-                    <div class="faq-content hidden mt-3">
-                        Yes, we support bulk export orders.
-                    </div>
-                </div>
-
-                <div class="border rounded-md p-4">
-                    <button class="faq-btn w-full flex justify-between font-semibold">
-                        Can you customize packaging?
-                        <span>+</span>
-                    </button>
-                    <div class="faq-content hidden mt-3">
-                        Yes, OEM/ODM available.
-                    </div>
-                </div>
-
-                <div class="border rounded-md p-4">
-                    <button class="faq-btn w-full flex justify-between font-semibold">
-                        What sizes are available?
-                        <span>+</span>
-                    </button>
-                    <div class="faq-content hidden mt-3">
-                        6mm, 8mm, 12mm.
-                    </div>
-                </div>
-
-                <div class="border rounded-md p-4">
-                    <button class="faq-btn w-full flex justify-between font-semibold">
-                        What is MOQ?
-                        <span>+</span>
-                    </button>
-                    <div class="faq-content hidden mt-3">
-                        Depends on order type.
-                    </div>
-                </div>
-
-                {{-- EXTRA 4 (hidden by default) --}}
-                <div class="extra-faq hidden space-y-3">
-
+                    {{-- 6 VISIBLE FAQ --}}
                     <div class="border rounded-md p-4">
                         <button class="faq-btn w-full flex justify-between font-semibold">
-                            Do you ship internationally?
+                            What are your straws made from?
                             <span>+</span>
                         </button>
                         <div class="faq-content hidden mt-3">
-                            Yes, worldwide shipping available.
+                            Our straws are made from rice flour and tapioca starch.
                         </div>
                     </div>
 
                     <div class="border rounded-md p-4">
                         <button class="faq-btn w-full flex justify-between font-semibold">
-                            Are products certified?
+                            Are rice straws safe for hot drinks?
                             <span>+</span>
                         </button>
                         <div class="faq-content hidden mt-3">
-                            ISO & HACCP certified.
+                            Yes, safe for hot & cold drinks.
                         </div>
                     </div>
 
                     <div class="border rounded-md p-4">
                         <button class="faq-btn w-full flex justify-between font-semibold">
-                            How long do straws last?
+                            Do you offer bulk orders?
                             <span>+</span>
                         </button>
                         <div class="faq-content hidden mt-3">
-                            40–120 minutes depending on drink.
+                            Yes, we support bulk export orders.
                         </div>
                     </div>
 
                     <div class="border rounded-md p-4">
                         <button class="faq-btn w-full flex justify-between font-semibold">
-                            How to request quote?
+                            Can you customize packaging?
                             <span>+</span>
                         </button>
                         <div class="faq-content hidden mt-3">
-                            Contact via form or WhatsApp.
+                            Yes, OEM/ODM available.
                         </div>
                     </div>
 
+                    <div class="border rounded-md p-4">
+                        <button class="faq-btn w-full flex justify-between font-semibold">
+                            What sizes are available?
+                            <span>+</span>
+                        </button>
+                        <div class="faq-content hidden mt-3">
+                            6mm, 8mm, 12mm.
+                        </div>
+                    </div>
+
+                    <div class="border rounded-md p-4">
+                        <button class="faq-btn w-full flex justify-between font-semibold">
+                            What is MOQ?
+                            <span>+</span>
+                        </button>
+                        <div class="faq-content hidden mt-3">
+                            Depends on order type.
+                        </div>
+                    </div>
+
+                    {{-- EXTRA 4 (hidden by default) --}}
+                    <div class="extra-faq hidden space-y-3">
+
+                        <div class="border rounded-md p-4">
+                            <button class="faq-btn w-full flex justify-between font-semibold">
+                                Do you ship internationally?
+                                <span>+</span>
+                            </button>
+                            <div class="faq-content hidden mt-3">
+                                Yes, worldwide shipping available.
+                            </div>
+                        </div>
+
+                        <div class="border rounded-md p-4">
+                            <button class="faq-btn w-full flex justify-between font-semibold">
+                                Are products certified?
+                                <span>+</span>
+                            </button>
+                            <div class="faq-content hidden mt-3">
+                                ISO & HACCP certified.
+                            </div>
+                        </div>
+
+                        <div class="border rounded-md p-4">
+                            <button class="faq-btn w-full flex justify-between font-semibold">
+                                How long do straws last?
+                                <span>+</span>
+                            </button>
+                            <div class="faq-content hidden mt-3">
+                                40–120 minutes depending on drink.
+                            </div>
+                        </div>
+
+                        <div class="border rounded-md p-4">
+                            <button class="faq-btn w-full flex justify-between font-semibold">
+                                How to request quote?
+                                <span>+</span>
+                            </button>
+                            <div class="faq-content hidden mt-3">
+                                Contact via form or WhatsApp.
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- BUTTON -->
+                <div class="text-center mt-6">
+                    <button id="faqToggleBtn" class="px-6 py-2 bg-[#ED1C24] text-white rounded-md">
+                        View More
+                    </button>
                 </div>
 
             </div>
-
-            <!-- BUTTON -->
-            <div class="text-center mt-6">
-                <button id="faqToggleBtn"
-                    class="px-6 py-2 bg-[#ED1C24] text-white rounded-md">
-                    View More
-                </button>
-            </div>
-
         </div>
     </div>
-</div>
 
     <!-- CTA SECTION -->
     <div class="my-20 bg-[#0B0B54] text-white py-20 text-center relative overflow-hidden">
@@ -686,28 +632,28 @@
 
     });
 
-    document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener("DOMContentLoaded", function() {
 
-    // FAQ accordion
-    document.querySelectorAll(".faq-btn").forEach(btn => {
-        btn.addEventListener("click", function () {
-            const content = this.nextElementSibling;
-            content.classList.toggle("hidden");
-            this.querySelector("span").textContent =
-                content.classList.contains("hidden") ? "+" : "-";
+        // FAQ accordion
+        document.querySelectorAll(".faq-btn").forEach(btn => {
+            btn.addEventListener("click", function() {
+                const content = this.nextElementSibling;
+                content.classList.toggle("hidden");
+                this.querySelector("span").textContent =
+                    content.classList.contains("hidden") ? "+" : "-";
+            });
         });
+
+        // View more (6 → 10)
+        const btn = document.getElementById("faqToggleBtn");
+        const extra = document.querySelector(".extra-faq");
+
+        btn.addEventListener("click", function() {
+            extra.classList.toggle("hidden");
+
+            const open = !extra.classList.contains("hidden");
+            btn.textContent = open ? "View Less" : "View More";
+        });
+
     });
-
-    // View more (6 → 10)
-    const btn = document.getElementById("faqToggleBtn");
-    const extra = document.querySelector(".extra-faq");
-
-    btn.addEventListener("click", function () {
-        extra.classList.toggle("hidden");
-
-        const open = !extra.classList.contains("hidden");
-        btn.textContent = open ? "View Less" : "View More";
-    });
-
-});
 </script>

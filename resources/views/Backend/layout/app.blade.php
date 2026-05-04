@@ -1,63 +1,108 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-full">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'ProdMan - Backend')</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>@yield('title', 'Dashboard') — LED Events Admin</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+
+    <script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/classic/ckeditor.js"></script>
+
+    @stack('styles')
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#content_en'))
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
 </head>
-<body class="bg-gray-50">
 
-<div class="flex h-screen overflow-hidden">
-    
-    <!-- Sidebar -->
-    @include('backend.layout.sidebar')
+<body class="h-full bg-[#0c0c14] text-gray-100 antialiased font-sans">
 
-    <!-- Main Content Area -->
-    <div class="flex-1 flex flex-col overflow-hidden">
-        
-        <!-- Top Navbar -->
-        <header class="bg-white border-b px-6 py-4 flex items-center justify-between shadow-sm">
-            <div class="flex items-center gap-4">
-                <button id="toggleSidebar" class="lg:hidden text-gray-600 hover:text-black">
-                    <i class="fas fa-bars text-2xl"></i>
-                </button>
-                <h1 class="text-2xl font-bold text-gray-800">@yield('title', 'Dashboard')</h1>
-            </div>
-
-            <div class="flex items-center gap-6">
-                <!-- <div class="relative">
-                    <input type="text" placeholder="Search..." 
-                           class="w-80 bg-gray-100 border border-gray-300 rounded-full py-2.5 pl-11 focus:outline-none focus:border-blue-500">
-                    <i class="fas fa-search absolute left-4 top-3 text-gray-400"></i>
-                </div> -->
-
-                <button class="relative text-gray-600 hover:text-black">
-                    <i class="fas fa-bell text-xl"></i>
-                    <span class="absolute -top-1 -right-1 bg-red-500 text-[10px] text-white w-4 h-4 rounded-full flex items-center justify-center">3</span>
-                </button>
-
-                <div class="flex items-center gap-3">
-                    <img src="https://i.pravatar.cc/36" alt="Profile" class="w-9 h-9 rounded-full ring-2 ring-gray-200">
-                    <div class="hidden sm:block">
-                        <p class="text-sm font-semibold">Admin</p>
-                        <p class="text-xs text-gray-500 -mt-0.5">Online</p>
-                    </div>
-                </div>
-            </div>
-        </header>
-
-        <!-- Page Content -->
-        <main class="flex-1 overflow-auto p-6">
-            @yield('content')
-        </main>
+    {{-- Mobile overlay --}}
+    <div id="sidebar-overlay" class="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm hidden lg:hidden" aria-hidden="true">
     </div>
-</div>
 
-<script>
-    document.getElementById('toggleSidebar').addEventListener('click', () => {
-        document.getElementById('sidebar').classList.toggle('-translate-x-full');
-    });
-</script>
+    <div class="flex min-h-screen">
 
+        {{-- Sidebar --}}
+        @include('backend.components.sidebar')
+
+        {{-- Main Wrapper — no left offset on mobile, offset on lg+ --}}
+        <div class="flex flex-col flex-1 min-h-screen lg:ml-64">
+
+            {{-- Top Header --}}
+            @include('backend.components.header')
+
+            {{-- Main Content --}}
+            <main class="flex-1 p-4 sm:p-6 overflow-auto">
+                @if (session('success'))
+                    <div
+                        class="mb-4 flex items-center gap-3 rounded-lg border border-green-500/30 bg-green-500/10 px-4 py-3 text-sm text-green-400">
+                        <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                        {{ session('success') }}
+                    </div>
+                @endif
+                @if (session('error'))
+                    <div
+                        class="mb-4 flex items-center gap-3 rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-400">
+                        <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01" />
+                        </svg>
+                        {{ session('error') }}
+                    </div>
+                @endif
+                @yield('content')
+            </main>
+
+            {{-- Footer --}}
+            @include('backend.components.footer')
+
+        </div>
+
+    </div>
+
+    @stack('scripts')
+
+    <script>
+        const toggleBtn = document.getElementById('sidebar-toggle');
+        const closeBtn = document.getElementById('sidebar-close');
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('sidebar-overlay');
+
+        function openSidebar() {
+            sidebar.classList.remove('-translate-x-full');
+            overlay.classList.remove('hidden');
+            document.body.classList.add('overflow-hidden');
+        }
+
+        function closeSidebar() {
+            sidebar.classList.add('-translate-x-full');
+            overlay.classList.add('hidden');
+            document.body.classList.remove('overflow-hidden');
+        }
+
+        toggleBtn?.addEventListener('click', () => {
+            sidebar.classList.contains('-translate-x-full') ? openSidebar() : closeSidebar();
+        });
+        closeBtn?.addEventListener('click', closeSidebar);
+        overlay?.addEventListener('click', closeSidebar);
+
+        // Auto-close drawer when resizing to desktop
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 1024) closeSidebar();
+        });
+    </script>
+</body>
+
+</html>
