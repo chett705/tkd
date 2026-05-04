@@ -4,7 +4,7 @@
     <div class="bg-[#0B0B54] font-semibold relative z-20">
         <div class="container mx-auto flex items-center justify-between py-5 px-5">
 
-            <!-- BRAND (mobile / tablet / small laptop) -->
+            <!-- MOBILE BRAND -->
             <div class="flex items-center xl:hidden text-[#ED1C24] font-bold text-xl">
                 TK & D
             </div>
@@ -21,7 +21,7 @@
             </ul>
 
             <!-- HAMBURGER -->
-            <button @click="open = !open" class="xl:hidden text-white text-2xl relative z-[1000]">
+            <button @click="open = !open" class="xl:hidden text-white text-2xl relative z-[10001]">
                 <i :class="open ? 'fa-solid fa-xmark' : 'fa-solid fa-bars'"></i>
             </button>
 
@@ -32,8 +32,8 @@
     <div
         x-show="open"
         x-transition.opacity
-        class="fixed inset-0 bg-black/50 xl:hidden z-[998]"
-        @click="open = false">
+        class="fixed inset-0 bg-black/50 xl:hidden z-[9998]"
+        @click="open=false">
     </div>
 
     <!-- SIDEBAR -->
@@ -45,7 +45,7 @@
         x-transition:leave="transition transform duration-300"
         x-transition:leave-start="translate-x-0"
         x-transition:leave-end="-translate-x-full"
-        class="fixed top-0 left-0 h-full w-72 bg-[#0B0B54] p-6 space-y-6 xl:hidden z-[999]">
+        class="fixed top-0 left-0 h-full w-72 bg-[#0B0B54] p-6 space-y-6 xl:hidden z-[9999]">
 
         <h2 class="text-[#ED1C24] text-xl font-bold">TK & D</h2>
 
@@ -60,7 +60,7 @@
     </div>
 
     <!-- SUB HEADER -->
-    <div class="absolute top-0 left-0 w-1/3 overflow-hidden hidden xl:block z-0">
+    <div class="absolute top-0 left-0 w-1/3 overflow-hidden hidden xl:block z-51">
 
         <div class="absolute inset-0 bg-[#ED1C24]
             [clip-path:polygon(0_0,100%_0,90%_100%,0_100%)]">
@@ -69,7 +69,6 @@
         <div class="relative z-10 px-6 py-6 flex justify-center">
             <h1 class="text-2xl font-bold">Production Factory</h1>
         </div>
-
     </div>
 
 </div>
