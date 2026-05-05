@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 <div x-data="{ open: false }" class="relative text-white capitalize">
 
     <!-- TOP NAV -->
     <div class="bg-[#0B0B54] font-semibold relative z-20">
+=======
+<div x-data="{ open: false }" class="text-white capitalize relative">
+
+    <!-- TOP NAV -->
+    <div class="bg-[#0B0B54] font-semibold relative z-50">
+>>>>>>> 3b6fa98630153f0ad8961ebf2c45ec9cf7ae3ff3
         <div class="container mx-auto flex items-center justify-between py-5 px-5">
 
             <!-- MOBILE BRAND -->
@@ -11,6 +18,7 @@
 
             <!-- DESKTOP MENU -->
             <ul class="hidden xl:flex items-center gap-5 ml-auto">
+<<<<<<< HEAD
                 <a href="/" class="hover:underline hover:decoration-[#ED1C24] hover:underline-offset-4 hover:text-[#ED1C24]">home</a>
                 <a href="/about-us" class="hover:underline hover:decoration-[#ED1C24] hover:underline-offset-4 hover:text-[#ED1C24]">about us</a>
                 <a href="/our-trading-products" class="hover:underline hover:decoration-[#ED1C24] hover:underline-offset-4 hover:text-[#ED1C24]">our trading products</a>
@@ -22,6 +30,20 @@
 
             <!-- HAMBURGER -->
             <button @click="open = !open" class="xl:hidden text-white text-2xl relative z-[10001]">
+=======
+                <a href="/" class="hover:text-[#ED1C24]">home</a>
+                <a href="/about-us" class="hover:text-[#ED1C24]">about us</a>
+                <a href="/our-trading-products" class="hover:text-[#ED1C24]">products</a>
+                <a href="/export" class="hover:text-[#ED1C24]">export</a>
+                <a href="/blog" class="hover:text-[#ED1C24]">blog</a>
+                <a href="/activities" class="hover:text-[#ED1C24]">activities</a>
+                <a href="/contact-us" class="hover:text-[#ED1C24]">contact</a>
+            </ul>
+
+            <!-- HAMBURGER -->
+            <button @click="open = !open"
+                class="xl:hidden text-white text-2xl relative z-50">
+>>>>>>> 3b6fa98630153f0ad8961ebf2c45ec9cf7ae3ff3
                 <i :class="open ? 'fa-solid fa-xmark' : 'fa-solid fa-bars'"></i>
             </button>
 
@@ -51,11 +73,11 @@
 
         <a href="/" @click="open=false" class="block hover:text-[#ED1C24]">home</a>
         <a href="/about-us" @click="open=false" class="block hover:text-[#ED1C24]">about us</a>
-        <a href="/our-trading-products" @click="open=false" class="block hover:text-[#ED1C24]">our trading products</a>
+        <a href="/our-trading-products" @click="open=false" class="block hover:text-[#ED1C24]">products</a>
         <a href="/export" @click="open=false" class="block hover:text-[#ED1C24]">export</a>
         <a href="/blog" @click="open=false" class="block hover:text-[#ED1C24]">blog</a>
         <a href="/activities" @click="open=false" class="block hover:text-[#ED1C24]">activities</a>
-        <a href="/contact-us" @click="open=false" class="block hover:text-[#ED1C24]">contact us</a>
+        <a href="/contact-us" @click="open=false" class="block hover:text-[#ED1C24]">contact</a>
 
     </div>
 
