@@ -145,128 +145,88 @@
     </div>
 
     {{-- why choose us --}}
-    <div class="relative h-[110vh] md:h-[70vh] lg:h-[80vh] bg-cover bg-top"
-        style="background-image: url('https://wp-themes.com/wp-content/themes/production-factory/assets/images/section-img.png');">
+    <div class="relative bg-cover bg-top" style="background-image: url('{{ asset('storage/' . $heroUs->media_url) }}');">
 
         <!-- DARK OVERLAY -->
         <div class="absolute inset-0 bg-[#0B0B54]/75"></div>
 
         <!-- CONTENT -->
-        <div class="relative z-10 h-full text-white py-10 lg:py-20">
+        <div class="relative z-10 text-white py-16">
 
-            <div class="flex flex-col lg:flex-row items-center justify-center gap-10">
+            <div class="container mx-auto flex flex-col lg:flex-row items-center gap-5 px-1">
 
-                {{-- images (HIDE ON MOBILE/TABLET) --}}
-                <div class="hidden lg:flex items-center justify-center gap-3">
-                    <div class="flex flex-col items-center gap-3">
-                        <img src="https://wp-themes.com/wp-content/themes/production-factory/assets/images/about01.png"
-                            class="rounded-md">
-                        <img src="https://wp-themes.com/wp-content/themes/production-factory/assets/images/about02.png"
-                            class="rounded-md">
-                    </div>
+                {{-- LEFT: IMAGES --}}
+                <div class="w-full lg:w-1/2 flex flex-col md:flex-row gap-3 ">
 
-                    <img src="https://wp-themes.com/wp-content/themes/production-factory/assets/images/about03.png"
-                        class="rounded-md">
+                    @foreach ($us->take(1) as $item)
+                        @php
+                            $images = json_decode($item->images, true);
+                        @endphp
+
+                        {{-- column images --}}
+                        <div class="flex flex-col gap-3">
+                            @if (isset($images[0]))
+                                <img src="{{ asset('storage/' . $images[0]) }}"
+                                    class="w-32 sm:w-40 md:w-48 rounded-md object-cover">
+                            @endif
+
+                            @if (isset($images[1]))
+                                <img src="{{ asset('storage/' . $images[1]) }}"
+                                    class="w-32 sm:w-40 md:w-48 rounded-md object-cover">
+                            @endif
+                        </div>
+
+                        {{-- big image --}}
+                        @if (isset($images[2]))
+                            <img src="{{ asset('storage/' . $images[2]) }}"
+                                class="w-40 sm:w-52 md:w-60 rounded-md object-cover">
+                        @endif
+                    @endforeach
+
                 </div>
 
-                {{-- text (FULL WIDTH ON MOBILE) --}}
-                <div class="flex flex-col gap-5 w-full lg:w-auto px-5 lg:px-0">
+                {{-- RIGHT: TEXT --}}
+                <div class="w-full lg:w-1/2 flex flex-col gap-6">
 
                     <div>
                         <p class="text-[#ED1C24] font-bold text-[16px] lg:text-[19px]">
                             Why Choose Us
                         </p>
+
                         <p class="text-[22px] lg:text-[28px] font-bold">
-                            We want to give you the best service
+                            {{ $heroUs->title_en }}
                         </p>
                     </div>
 
-                    <p class="text-sm lg:text-base max-w-full lg:w-[770px]">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-                        industry's standard dummy text ever since the 1500s
+                    <p class="text-sm lg:text-base">
+                        {{ $heroUs->subtitle_en }}
                     </p>
 
-                    {{-- icon & text --}}
+                    {{-- ICON GRID --}}
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
 
-                        <!-- item -->
-                        <div class="flex flex-col gap-3 items-start">
-                            <img src="{{ asset('icons/biodegradable.png') }}"
-                                class="w-8 h-8 lg:w-10 lg:h-10 object-contain filter brightness-0 invert">
+                        @foreach ($us->skip(1) as $item)
+                            <div class="flex flex-col gap-3 items-start">
 
-                            <div class="flex flex-col">
-                                <p class="text-base lg:text-[19px] font-bold">
-                                    100% biodegradable products
-                                </p>
-                                <p class="text-sm">
-                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                </p>
+                                <img src="{{ asset('storage/' . $item->icon) }}"
+                                    class="w-8 h-8 lg:w-10 lg:h-10 object-contain filter brightness-0 invert">
+
+                                <div>
+                                    <p class="text-base lg:text-[19px] font-bold">
+                                        {{ $item->title_en }}
+                                    </p>
+                                    <p class="text-sm">
+                                        {{ $item->description_en }}
+                                    </p>
+                                </div>
+
                             </div>
-                        </div>
-
-                        <!-- item -->
-                        <div class="flex flex-col gap-3 items-start">
-                            <img src="{{ asset('icons/security (1).png') }}"
-                                class="w-8 h-8 lg:w-10 lg:h-10 object-contain filter brightness-0 invert">
-
-                            <div class="flex flex-col">
-                                <p class="text-base lg:text-[19px] font-bold">
-                                    Strong & durable
-                                </p>
-                                <p class="text-sm">
-                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                </p>
-                            </div>
-                        </div>
-
-                        <!-- item -->
-                        <div class="flex flex-col gap-3 items-start">
-                            <img src="{{ asset('icons/dollar.png') }}"
-                                class="w-8 h-8 lg:w-10 lg:h-10 object-contain filter brightness-0 invert">
-
-                            <div class="flex flex-col">
-                                <p class="text-base lg:text-[19px] font-bold">
-                                    Competitive pricing
-                                </p>
-                                <p class="text-sm">
-                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                </p>
-                            </div>
-                        </div>
-
-                        <!-- item -->
-                        <div class="flex flex-col gap-3 items-start">
-                            <img src="{{ asset('icons/global-shipping.png') }}"
-                                class="w-8 h-8 lg:w-10 lg:h-10 object-contain filter brightness-0 invert">
-
-                            <div class="flex flex-col">
-                                <p class="text-base lg:text-[19px] font-bold">
-                                    Export-ready production
-                                </p>
-                                <p class="text-sm">
-                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                </p>
-                            </div>
-                        </div>
-
-                        <!-- item -->
-                        <div class="flex flex-col gap-3 items-start sm:col-span-2 lg:col-span-1">
-                            <img src="{{ asset('icons/development.png') }}"
-                                class="w-8 h-8 lg:w-10 lg:h-10 object-contain filter brightness-0 invert">
-
-                            <div class="flex flex-col">
-                                <p class="text-base lg:text-[19px] font-bold">
-                                    OEM/ODM
-                                </p>
-                                <p class="text-sm">
-                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                </p>
-                            </div>
-                        </div>
+                        @endforeach
 
                     </div>
 
                 </div>
+
             </div>
         </div>
     </div>
@@ -297,45 +257,16 @@
             <div class="overflow-hidden">
                 <div id="carousel" class="flex transition-transform duration-500 ease-in-out">
 
-                    <div class="w-full sm:w-1/2 lg:w-1/3 flex-shrink-0 px-2">
-                        <div class="border rounded-md p-3">
-                            <p class="text-center font-bold pb-3">ISO & HACCP aligned</p>
-                            <p class="text-center line-clamp-5">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Laboriosam nemo culpa, modi totam exercitationem incidunt reiciendis inventore iusto maiores
-                                consectetur doloribus rem rerum. Magni exercitationem accusantium doloribus vero molestias
-                                quae.</p>
+                    @foreach ($productQuantity as $item)
+                        <div class="w-full sm:w-1/2 lg:w-1/3 flex-shrink-0 px-2">
+                            <div class="border rounded-md p-3">
+                                <p class="text-center font-bold pb-3">{{ $item->title_en }}</p>
+                                <p class="text-center line-clamp-5">{{ $item->description_en }}</p>
+                            </div>
                         </div>
-                    </div>
+                    @endforeach
 
-                    <div class="w-full sm:w-1/2 lg:w-1/3 flex-shrink-0 px-2">
-                        <div class="border rounded-md p-3">
-                            <p class="text-center font-bold pb-3">Food Safety</p>
-                            <p class="text-center line-clamp-5">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Laboriosam nemo culpa, modi totam exercitationem incidunt reiciendis inventore iusto maiores
-                                consectetur doloribus rem rerum. Magni exercitationem accusantium doloribus vero molestias
-                                quae.</p>
-                        </div>
-                    </div>
 
-                    <div class="w-full sm:w-1/2 lg:w-1/3 flex-shrink-0 px-2">
-                        <div class="border rounded-md p-3">
-                            <p class="text-center font-bold pb-3">Quality Control</p>
-                            <p class="text-center line-clamp-5">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Laboriosam nemo culpa, modi totam exercitationem incidunt reiciendis inventore iusto maiores
-                                consectetur doloribus rem rerum. Magni exercitationem accusantium doloribus vero molestias
-                                quae.</p>
-                        </div>
-                    </div>
-
-                    <div class="w-full sm:w-1/2 lg:w-1/3 flex-shrink-0 px-2">
-                        <div class="border rounded-md p-3">
-                            <p class="text-center font-bold pb-3">Export Standard</p>
-                            <p class="text-center line-clamp-5">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Laboriosam nemo culpa, modi totam exercitationem incidunt reiciendis inventore iusto maiores
-                                consectetur doloribus rem rerum. Magni exercitationem accusantium doloribus vero molestias
-                                quae.</p>
-                        </div>
-                    </div>
 
                 </div>
             </div>
@@ -442,118 +373,35 @@
             </div>
 
             <!-- RIGHT -->
-            <div>
+            <div class="space-y-3">
 
-                <div class="space-y-3">
-
-                    {{-- 6 VISIBLE FAQ --}}
+                {{-- FIRST 6 FAQ --}}
+                @foreach ($faq->take(6) as $item)
                     <div class="border rounded-md p-4">
                         <button class="faq-btn w-full flex justify-between font-semibold">
-                            What are your straws made from?
+                            {{ $item->title_en }}
                             <span>+</span>
                         </button>
                         <div class="faq-content hidden mt-3">
-                            Our straws are made from rice flour and tapioca starch.
+                            {{ $item->description_en }}
                         </div>
                     </div>
+                @endforeach
 
-                    <div class="border rounded-md p-4">
-                        <button class="faq-btn w-full flex justify-between font-semibold">
-                            Are rice straws safe for hot drinks?
-                            <span>+</span>
-                        </button>
-                        <div class="faq-content hidden mt-3">
-                            Yes, safe for hot & cold drinks.
-                        </div>
-                    </div>
-
-                    <div class="border rounded-md p-4">
-                        <button class="faq-btn w-full flex justify-between font-semibold">
-                            Do you offer bulk orders?
-                            <span>+</span>
-                        </button>
-                        <div class="faq-content hidden mt-3">
-                            Yes, we support bulk export orders.
-                        </div>
-                    </div>
-
-                    <div class="border rounded-md p-4">
-                        <button class="faq-btn w-full flex justify-between font-semibold">
-                            Can you customize packaging?
-                            <span>+</span>
-                        </button>
-                        <div class="faq-content hidden mt-3">
-                            Yes, OEM/ODM available.
-                        </div>
-                    </div>
-
-                    <div class="border rounded-md p-4">
-                        <button class="faq-btn w-full flex justify-between font-semibold">
-                            What sizes are available?
-                            <span>+</span>
-                        </button>
-                        <div class="faq-content hidden mt-3">
-                            6mm, 8mm, 12mm.
-                        </div>
-                    </div>
-
-                    <div class="border rounded-md p-4">
-                        <button class="faq-btn w-full flex justify-between font-semibold">
-                            What is MOQ?
-                            <span>+</span>
-                        </button>
-                        <div class="faq-content hidden mt-3">
-                            Depends on order type.
-                        </div>
-                    </div>
-
-                    {{-- EXTRA 4 (hidden by default) --}}
-                    <div class="extra-faq hidden space-y-3">
-
+                {{-- EXTRA FAQ (hidden by default) --}}
+                <div class="extra-faq hidden space-y-3">
+                    @foreach ($faq->skip(6) as $item)
                         <div class="border rounded-md p-4">
                             <button class="faq-btn w-full flex justify-between font-semibold">
-                                Do you ship internationally?
+                                {{ $item->title_en }}
                                 <span>+</span>
                             </button>
                             <div class="faq-content hidden mt-3">
-                                Yes, worldwide shipping available.
+                                {{ $item->description_en }}
                             </div>
                         </div>
-
-                        <div class="border rounded-md p-4">
-                            <button class="faq-btn w-full flex justify-between font-semibold">
-                                Are products certified?
-                                <span>+</span>
-                            </button>
-                            <div class="faq-content hidden mt-3">
-                                ISO & HACCP certified.
-                            </div>
-                        </div>
-
-                        <div class="border rounded-md p-4">
-                            <button class="faq-btn w-full flex justify-between font-semibold">
-                                How long do straws last?
-                                <span>+</span>
-                            </button>
-                            <div class="faq-content hidden mt-3">
-                                40–120 minutes depending on drink.
-                            </div>
-                        </div>
-
-                        <div class="border rounded-md p-4">
-                            <button class="faq-btn w-full flex justify-between font-semibold">
-                                How to request quote?
-                                <span>+</span>
-                            </button>
-                            <div class="faq-content hidden mt-3">
-                                Contact via form or WhatsApp.
-                            </div>
-                        </div>
-
-                    </div>
-
+                    @endforeach
                 </div>
-
                 <!-- BUTTON -->
                 <div class="text-center mt-6">
                     <button id="faqToggleBtn" class="px-6 py-2 bg-[#ED1C24] text-white rounded-md">
@@ -562,6 +410,8 @@
                 </div>
 
             </div>
+
+
         </div>
     </div>
 
@@ -578,16 +428,18 @@
             ”
         </div>
 
-        <!-- TEXT -->
-        <h2 class="text-[26px] md:text-[32px] font-bold mb-8 relative z-10">
-            Looking for a reliable eco-friendly supplier?
-        </h2>
+        @if($quote)
+    <!-- TEXT -->
+    <h2 class="text-[26px] md:text-[32px] font-bold mb-8 relative z-10">
+        {{ $quote->title_en }}
+    </h2>
 
-        <!-- BUTTON -->
-        <a href="#contact"
-            class="inline-block mt-10 bg-[#ED1C24] px-10 py-3 font-semibold rounded-md relative z-10 hover:bg-red-700 transition">
-            👉 Contact Us Today
-        </a>
+    <!-- BUTTON -->
+    <a href="{{ $quote->link }}"
+        class="inline-block mt-10 bg-[#ED1C24] px-10 py-3 font-semibold rounded-md relative z-10 hover:bg-red-700 transition">
+        👉 {{ $quote->button_text_en }}
+    </a>
+@endif
 
     </div>
 @endsection

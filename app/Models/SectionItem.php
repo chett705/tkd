@@ -15,5 +15,5 @@ class SectionItem extends Model
         'sort_order', 'is_active', 'type', 'meta',
     ];
 
-    protected $casts = ['meta' => 'array'];
+    protected $casts = ['meta' => 'array','images' => 'array',];
 }

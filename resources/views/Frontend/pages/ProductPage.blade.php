@@ -3,7 +3,7 @@
 @section('content')
     {{-- hero section --}}
     <div class="h-[93vh] bg-cover bg-center text-white relative"
-        style="background-image: url('https://wp-themes.com/wp-content/themes/production-factory/assets/images/banner-image.png');">
+        style="background-image: url('{{ asset('storage/' . $hero->media_url) }}');">
 
         <div class="absolute inset-0 bg-black/40"></div>
 
@@ -19,18 +19,18 @@
 
                 <div class="flex items-center gap-2">
                     <i class="fa-solid fa-phone text-black"></i>
-                    <p class="break-all">+855 12 590 666</p>
+                    <p class="break-all">{{ $contacts['phone']->value_en ?? '' }}</p>
                 </div>
 
                 <div class="flex items-center gap-2">
                     <i class="fa-solid fa-envelope text-black"></i>
-                    <p class="break-all">tkd.manufacturing89@gmail.com</p>
+                    <p class="break-all">{{ $contacts['email']->value_en ?? '' }}</p>
                 </div>
 
                 <div class="flex items-center gap-2 text-center md:text-left">
                     <i class="fa-solid fa-bullhorn text-black"></i>
                     <p class="text-xs md:text-sm lg:text-base">
-                        Delivering Industrial Excellence with Every Product.
+                        {{ $contacts['description']->value_en ?? '' }}
                     </p>
                 </div>
 
@@ -44,26 +44,31 @@
                 <h2
                     class="text-xl sm:text-2xl md:text-4xl lg:text-[44px]
                        leading-snug md:leading-tight font-bold break-words">
-                    Sustainable Rice-Flour Straws from Cambodia to the World
+                    {{ $hero->title_en }}
                 </h2>
 
                 <p class="text-sm sm:text-base md:text-lg lg:text-[22px] leading-relaxed">
-                    Eco-friendly, biodegradable, and durable alternatives to plastic straws.
+                    {{ $hero->subtitle_en }}
                 </p>
 
                 <!-- Buttons -->
                 <div class="flex flex-col sm:flex-row gap-3 w-full">
-                    <a href=""
-                        class="w-full sm:w-auto px-6 py-3 border border-[#ED1C24]
-                          bg-white text-[#ED1C24] font-semibold text-center">
-                        Get a Quote
-                    </a>
+                    @if ($hero->button_text_en)
+                        <a href={{ $hero->button_link_en }}
+                            class="w-full sm:w-auto px-6 py-3 border border-[#ED1C24]
+                          bg-white text-[#ED1C24] font-semibold text-center capitalize">
+                            {{ $hero->button_text_en }}
+                        </a>
+                    @endif
 
-                    <a href=""
-                        class="w-full sm:w-auto px-6 py-3 border border-[#ED1C24]
-                          bg-white text-[#ED1C24] font-semibold text-center">
-                        View Products
-                    </a>
+                    @if ($hero->button_text_km)
+                        <a href={{ $hero->button_link_km }}
+                            class="w-full sm:w-auto px-6 py-3 border border-[#ED1C24]
+                          bg-white text-[#ED1C24] font-semibold text-center capitalize">
+                            {{ $hero->button_text_km }}
+                        </a>
+                    @endif
+
                 </div>
             </div>
         </div>
@@ -76,49 +81,32 @@
 
             <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-3 sm:gap-4">
 
-                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-eXlyj9I5e2YDCeNauWU1_F-wkcC4bu7QGEaa5W74glPFho-Rk78WDf90It9LTt26ANHZ_DemR0zRCL4QW1uOhrwXYk0WmJcmFGalV_l6wnw_Ii5KXj22cBPDMqFcC86-SXIADjqGeF5SJUHogvgN3VrDXOgCwMeChKaSUJf3i_huaPDYg0E_ESoI2xLvB51C54sC9QJutHGaLQOqar5IeSZv6sUuMZh_hWfFnzDAxTnbAmR97Oc92p3NTOjyb6MZcc2V_N_aXmrD"
-                    class="w-full  object-cover rounded-lg shadow-lg" />
-
-                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-eXlyj9I5e2YDCeNauWU1_F-wkcC4bu7QGEaa5W74glPFho-Rk78WDf90It9LTt26ANHZ_DemR0zRCL4QW1uOhrwXYk0WmJcmFGalV_l6wnw_Ii5KXj22cBPDMqFcC86-SXIADjqGeF5SJUHogvgN3VrDXOgCwMeChKaSUJf3i_huaPDYg0E_ESoI2xLvB51C54sC9QJutHGaLQOqar5IeSZv6sUuMZh_hWfFnzDAxTnbAmR97Oc92p3NTOjyb6MZcc2V_N_aXmrD"
-                    class="w-full object-cover rounded-lg shadow-lg" />
-
-                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-eXlyj9I5e2YDCeNauWU1_F-wkcC4bu7QGEaa5W74glPFho-Rk78WDf90It9LTt26ANHZ_DemR0zRCL4QW1uOhrwXYk0WmJcmFGalV_l6wnw_Ii5KXj22cBPDMqFcC86-SXIADjqGeF5SJUHogvgN3VrDXOgCwMeChKaSUJf3i_huaPDYg0E_ESoI2xLvB51C54sC9QJutHGaLQOqar5IeSZv6sUuMZh_hWfFnzDAxTnbAmR97Oc92p3NTOjyb6MZcc2V_N_aXmrD"
-                    class="w-full  object-cover rounded-lg shadow-lg" />
-
-                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-eXlyj9I5e2YDCeNauWU1_F-wkcC4bu7QGEaa5W74glPFho-Rk78WDf90It9LTt26ANHZ_DemR0zRCL4QW1uOhrwXYk0WmJcmFGalV_l6wnw_Ii5KXj22cBPDMqFcC86-SXIADjqGeF5SJUHogvgN3VrDXOgCwMeChKaSUJf3i_huaPDYg0E_ESoI2xLvB51C54sC9QJutHGaLQOqar5IeSZv6sUuMZh_hWfFnzDAxTnbAmR97Oc92p3NTOjyb6MZcc2V_N_aXmrD"
-                    class="w-full object-cover rounded-lg shadow-lg" />
+                @if ($images && $images->images)
+                    @foreach ($images->images as $img)
+                        <img src="{{ asset('storage/' . $img) }}" class="w-full object-cover rounded-lg shadow-lg" />
+                    @endforeach
+                @endif
 
             </div>
             <!-- RIGHT CONTENT -->
             <div class="flex flex-col gap-8">
 
                 <!-- TITLE -->
-                <h2 class="text-3xl md:text-4xl font-bold text-white">
-                    Engineering Excellence: Rice-Flour Straws
-                </h2>
+                @if ($title)
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">
+                        {{ $title->title_en }}
+                    </h2>
+                @endif
 
                 <!-- FEATURES GRID -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
 
-                    <div>
-                        <h4 class="font-bold text-sm text-white uppercase">Biodegradability</h4>
-                        <p class="text-white">100% compostable in 90 days</p>
-                    </div>
-
-                    <div>
-                        <h4 class="font-bold text-sm text-white uppercase">Safety Standard</h4>
-                        <p class="text-white">Food-grade, non-toxic polymer alternative</p>
-                    </div>
-
-                    <div>
-                        <h4 class="font-bold text-sm text-white uppercase">Performance</h4>
-                        <p class="text-white">High structural integrity in hot/cold drinks</p>
-                    </div>
-
-                    <div>
-                        <h4 class="font-bold text-sm text-white uppercase">Sensory Profile</h4>
-                        <p class="text-white">Neutral taste, no paper-like residue</p>
-                    </div>
+                    @foreach ($sub as $item)
+                        <div>
+                            <h4 class="font-bold text-sm text-white uppercase">{{ $item->title_en }}</h4>
+                            <p class="text-white">{{ $item->description_en }}</p>
+                        </div>
+                    @endforeach
 
                 </div>
 
@@ -131,26 +119,12 @@
 
                     <div class="space-y-3 text-sm">
 
-                        <div class="flex justify-between">
-                            <span class="text-gray-600">Available Sizes</span>
-                            <span class="font-semibold">6mm / 8mm / 12mm (Jumbo)</span>
-                        </div>
-
-                        <div class="flex justify-between">
-                            <span class="text-gray-600">Natural Tones</span>
-                            <span class="font-semibold">White, Charcoal, Green, Brown</span>
-                        </div>
-
-                        <div class="flex justify-between">
-                            <span class="text-gray-600">Standard Length</span>
-                            <span class="font-semibold">200mm (Customizable)</span>
-                        </div>
-
-                        <div class="flex justify-between">
-                            <span class="text-gray-600">Packaging</span>
-                            <span class="font-semibold">Individual Wrap, Bulk, OEM</span>
-                        </div>
-
+                        @foreach ($technical as $item)
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">{{ $item->title_en }}</span>
+                                <span class="font-semibold">{{ $item->description_en }}</span>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
 
@@ -174,45 +148,47 @@
         {{-- card --}}
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10 py-40 md:py-30 container mx-auto px-5">
 
-            <div class="group">
+            @foreach ($products as $item)
+                    <!-- CARD -->
+                    <div class="group">
 
-                <!-- IMAGE WRAPPER -->
-                <div class="relative ">
+                        <div class="relative">
 
-                    <!-- IMAGE -->
-                    <img src="https://images.pexels.com/photos/6801215/pexels-photo-6801215.jpeg"
-                        class="w-full h-[300px] object-cover">
+                            <img src="{{ asset('storage/' . $item->image) }}"
+                                class="w-full h-[220px] sm:h-[260px] md:h-[300px] object-cover"
+                                alt="{{ $item->title_en ?? 'Product Image' }}">
+                            <!-- TOP BAR -->
+                            <div
+                                class="absolute top-[-10px] right-0 w-[85%] h-[22px] bg-[#0B0B54] z-50 transition-all duration-500 group-hover:w-[90%] group-hover:bg-[#ED1C24]
+                        [clip-path:polygon(0_0,100%_0,100%_100%,10%_100%)]">
+                            </div>
 
-                    <!-- TOP SLANTED BAR -->
-                    <div
-                        class="absolute top-[-13px] right-0 w-[85%] h-[26px] bg-[#0B0B54] z-50 transition-all duration-500 group-hover:w-[90%] group-hover:bg-[#ED1C24] [clip-path:polygon(0_0,100%_0,100%_100%,10%_100%)]">
+                            <!-- BOTTOM BAR -->
+                            <div
+                                class="absolute bottom-[-10px] left-0 w-[85%] h-[22px] bg-[#0B0B54] z-50 transition-all duration-500 group-hover:w-[90%] group-hover:bg-[#ED1C24]
+                        [clip-path:polygon(0_0,90%_0,100%_100%,0_100%)]">
+                            </div>
+
+                        </div>
+
+                        <!-- INFO -->
+                        <div class="flex flex-col justify-center items-center gap-3 py-6 px-4">
+
+                            <p class="font-semibold text-[17px] md:text-[19px] line-clamp-1">{{ $item->title_en }}</p>
+
+                            <p class="line-clamp-3 text-center text-sm md:text-base">
+                                {{ $item->description_en }}
+                            </p>
+
+                            <a href=""
+                                class="w-full text-center py-2 border bg-[#0B0B54] hover:bg-[#ED1C24] transition-all duration-500 text-white">
+                                Explore Product
+                            </a>
+
+                        </div>
+
                     </div>
-
-                    <!-- BOTTOM SLANTED BAR -->
-                    <div
-                        class="absolute bottom-[-13px] left-0 w-[85%] h-[26px]
-            bg-[#0B0B54]
-            z-50
-            transition-all duration-500
-            group-hover:w-[90%]
-            group-hover:bg-[#ED1C24]
-            [clip-path:polygon(0_0,90%_0,100%_100%,0_100%)]">
-                    </div>
-
-                </div>
-
-                <!-- PRODUCT INFO -->
-                <div class="flex flex-col justify-center items-center gap-3 py-7 px-5">
-                    <p class="font-semibold text-[19px] line-clamp-1">Title</p>
-                    <p class="line-clamp-3 text-center">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit...
-                    </p>
-                    <a href=""
-                        class="flex items-center justify-center w-full py-2 border bg-[#0B0B54] hover:bg-[#ED1C24] transition-all duration-500 text-white">Explore
-                        Product</a>
-                </div>
-
-            </div>
+                @endforeach
 
         </div>
 
