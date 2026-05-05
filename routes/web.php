@@ -121,15 +121,17 @@ Route::get('/export', function () {
     $whoWeServe = SectionItem::where('section_key', 'who-we-serve')->get();
     $exportCapability = SectionItem::where('section_key', 'export-capability')->get();
     $exportLi = SectionItem::where('section_key', 'export-li')->get();
-    $exportcont = SectionItem::where('section_key', 'export-cont')->get();
+    $exportcont = SectionItem::where('section_key', 'export-cont')
+        ->orderBy('sort_order')
+        ->get();
     $manufacturing = SectionItem::where('section_key', 'manufacturing')->get();
     $manufacturingCont = SectionItem::where('section_key', 'manufacturing-cont')->get();
 
     $production = SectionItem::where('section_key', 'production')->get();
     $productionCont = SectionItem::where('section_key', 'production-cont')->get();
     $productionImg = SectionItem::where('section_key', 'production-img')->get();
-
-    $gallery = SectionItem::where('section_key', 'gallery')->get();
+    $moq = SectionItem::where('section_key', 'moq')->get();
+   $gallery = SectionItem::where('section_key', 'gallery')->first();
 
     return view('Frontend.pages.Export', compact(
         'whoWeServe',
@@ -141,15 +143,31 @@ Route::get('/export', function () {
         'production',
         'productionCont',
         'productionImg',
+        'moq',
         'gallery'
     ));
 })->name('export');
 Route::get('/blog', function () {
-    return view('Frontend.pages.Blogpaage');
+
+    $comparison = SectionItem::where('section_key', 'comparison')->first();
+    $conclusion = SectionItem::where('section_key', 'conclusion')->first();
+    $qoute = SectionItem::where('section_key', 'quote')->first();
+    return view('Frontend.pages.Blogpaage', compact('comparison', 'conclusion', 'qoute'));
 })->name('blog');
 Route::get('/contact-us', function () {
     return view('Frontend.pages.ContactUsPage');
 })->name('contact-us');
 Route::get('/activities', function () {
-    return view('Frontend.pages.Activities');
+
+    $manufacturingName = SectionItem::where('section_key', 'manufacturing-name')->get();
+    $manufacturingProcess = SectionItem::where('section_key', 'manufacturing-process')->get();
+    $productionCapacity = SectionItem::where('section_key', 'product-capacity')->first();
+    $manufacturingCapacity = SectionItem::where('section_key', 'manufacturing-capacity')->get();
+   
+    
+    $impact = SectionItem::where('section_key', 'impact')->get();
+    $impactHead= SectionItem::where('section_key', 'impact-head')->get();
+    $impactCont = SectionItem::where('section_key', 'impact-cont')->get();
+
+    return view('Frontend.pages.Activities', compact('manufacturingName', 'manufacturingProcess', 'productionCapacity', 'manufacturingCapacity', 'impact', 'impactHead', 'impactCont'));
 })->name('activities');

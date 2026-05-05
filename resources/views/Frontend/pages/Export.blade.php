@@ -291,44 +291,33 @@
 
             <!-- Left column -->
             <div class="space-y-6">
-
                 <div>
                     @foreach ($exportLi as $item)
                     {!! $item->description_km !!}
                     @endforeach
                 </div>
 
-
-
-                <div>
-                    @foreach ($exportcont->where('sort_order', '<=', 2) as $item)
-                        <div>
-                        <h3 class="text-xl font-semibold">{{ $item->title }}</h3>
-                        <p class="text-sm sm:text-base">
-                            {!! $item->description_km !!}
-                        </p>
-                </div>
-                @endforeach
+                @foreach ($exportcont->where('sort_order', '<=', 2) as $item)
+                    <div>
+                    <h3 class="text-xl font-semibold">{{ $item->title_en }}</h3>
+                    <div class="text-sm sm:text-base">
+                        {!! $item->description_en !!}
+                    </div>
             </div>
-
+            @endforeach
         </div>
 
-
-
-    </div>
-
-    <!-- Right column -->
-    <div class="space-y-6">
-        @foreach ($exportcont->where('sort_order', '>', 2) as $item)
-        <div>
-            <h3 class="text-xl font-semibold">{{ $item->title }}</h3>
-            <p class="text-sm sm:text-base">
-                {!! $item->description_km !!}
-            </p>
+        <!-- Right column -->
+        <div class="space-y-6">
+            @foreach ($exportcont->where('sort_order', '>', 2) as $item)
+            <div>
+                <h3 class="text-xl font-semibold">{{ $item->title_en }}</h3>
+                <div class="text-sm sm:text-base">
+                    {!! $item->description_en !!}
+                </div>
+            </div>
+            @endforeach
         </div>
-        @endforeach
-    </div>
-
     </div>
     </div>
 </section>
@@ -343,40 +332,17 @@
 
         <!-- Grid -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <!-- Standard MOQ -->
-            <div class="bg-white shadow rounded-lg p-6 space-y-4">
-                <h3 class="text-xl font-semibold text-blue-700">Standard MOQ</h3>
-                <ul class="list-disc list-inside text-gray-600 space-y-2">
-                    <li>Standard Sizes: 100,000 units</li>
-                    <li>Custom Lengths: 250,000 units</li>
-                    <li>Private Label: 500,000 units</li>
-                </ul>
-            </div>
 
-            <!-- Packaging Options -->
-            <div class="bg-white shadow rounded-lg p-6 space-y-4">
-                <h3 class="text-xl font-semibold text-blue-700">Packaging Options</h3>
-                <ul class="list-disc list-inside text-gray-600 space-y-2">
-                    <li>Individual Paper/PLA Wrap</li>
-                    <li>Bulk Carton (Loose Pack)</li>
-                    <li>Retail-Ready Display Boxes</li>
-                    <li>Custom Branded Outer Cartons</li>
-                </ul>
-            </div>
-
+            @foreach ($moq as $item)
             <!-- OEM & Customization -->
             <div class="bg-white shadow rounded-lg p-6 space-y-4">
-                <h3 class="text-xl font-semibold text-blue-700">OEM & Customization</h3>
+                <h3 class="text-xl font-semibold text-blue-700">{{ $item->title_en }}</h3>
                 <p class="text-gray-600">
-                    Complete brand integration for large distributors:
+                    {{ $item->description_en }}
                 </p>
-                <ul class="list-disc list-inside text-gray-600 space-y-2">
-                    <li>Logo Printing on Wrappers</li>
-                    <li>Custom Straw Diameters (6–14mm)</li>
-                    <li>Natural Dye Color Matching</li>
-                    <li>Point-of-Sale Packaging Design</li>
-                </ul>
+                {!! $item->description_km !!}
             </div>
+            @endforeach
         </div>
     </div>
 </section>
@@ -440,41 +406,25 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <!-- TITLE -->
+       
         <div class="text-center mb-10">
             <h2 class="text-3xl font-bold text-[#0B0B54]">Gallery</h2>
             <p class="text-gray-600 mt-2">Structured visual showcase of our work</p>
         </div>
+   
 
         <!-- COMPLEX GRID -->
         <div class="grid grid-cols-2 md:grid-cols-6 gap-4 auto-rows-[140px]">
+            
 
-            <!-- BIG HERO IMAGE -->
-            <img src="https://picsum.photos/800/800?1"
-                class="w-full h-full object-cover rounded-lg shadow-md col-span-2 md:col-span-3 row-span-2">
 
-            <!-- NORMAL -->
-            <img src="https://picsum.photos/500/500?2" class="w-full h-full object-cover rounded-lg shadow-md">
+            @foreach (json_decode($gallery->images ?? '[]', true) as $image)
+            <img src="{{ asset('storage/' . $image) }}"
+                class="w-full h-full object-cover rounded-lg shadow-md">
+            @endforeach
 
-            <img src="https://picsum.photos/500/500?3" class="w-full h-full object-cover rounded-lg shadow-md">
 
-            <!-- VERTICAL IMAGE -->
-            <img src="https://picsum.photos/500/700?4"
-                class="w-full h-full object-cover rounded-lg shadow-md row-span-2">
-
-            <!-- NORMAL -->
-            <img src="https://picsum.photos/500/500?5" class="w-full h-full object-cover rounded-lg shadow-md">
-
-            <!-- WIDE IMAGE -->
-            <img src="https://picsum.photos/900/500?6"
-                class="w-full h-full object-cover rounded-lg shadow-md col-span-2 md:col-span-3">
-
-            <!-- SMALL ITEMS -->
-            <img src="https://picsum.photos/500/500?7" class="w-full h-full object-cover rounded-lg shadow-md">
-
-            <img src="https://picsum.photos/500/500?8" class="w-full h-full object-cover rounded-lg shadow-md">
-
-            <img src="https://picsum.photos/500/500?9" class="w-full h-full object-cover rounded-lg shadow-md">
-
+            
         </div>
 
     </div>
