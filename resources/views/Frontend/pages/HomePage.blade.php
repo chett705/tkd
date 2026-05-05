@@ -160,7 +160,7 @@
 
                     @foreach ($us->take(1) as $item)
                         @php
-                            $images = json_decode($item->images, true);
+                           $images = $item->images;
                         @endphp
 
                         {{-- column images --}}
