@@ -1,4 +1,4 @@
-@extends('backend.layout.app')
+﻿@extends('backend.layout.app')
 
 @section('title', 'Page Sections')
 @section('page-title', 'Page Sections')
@@ -63,7 +63,7 @@
             </select>
 
             {{-- FILTER BUTTON --}}
-            <button class="bg-orange-500 text-white px-4 py-2 rounded text-sm hover:bg-orange-600">
+            <button class="bg-[#0d66b5] text-white px-4 py-2 rounded text-sm hover:bg-[#0a4f97]">
                 Filter
             </button>
 
@@ -79,7 +79,7 @@
         <div class="flex items-center">
 
             <a href="{{ route('admin.page-sections.create') }}"
-               class="inline-flex items-center gap-2 px-4 py-2 bg-orange-500 text-white text-sm rounded-lg hover:bg-orange-600 transition">
+               class="inline-flex items-center gap-2 px-4 py-2 bg-[#0d66b5] text-white text-sm rounded-lg hover:bg-[#0a4f97] transition">
 
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2"
                      viewBox="0 0 24 24">

@@ -1,4 +1,4 @@
-@extends('backend.layout.app')
+﻿@extends('backend.layout.app')
 
 @section('title', isset($page) ? 'Update Page' : 'Create Page')
 @section('page-title', isset($page) ? 'Update Page' : 'Create Page')
@@ -29,7 +29,7 @@
                        name="slug"
                        value="{{ old('slug', $page->slug ?? '') }}"
                        placeholder="page-slug"
-                       class="mt-2 w-full bg-gray-800 text-gray-400 p-2 rounded-xl border border-gray-700 focus:border-orange-500 outline-none">
+                       class="mt-2 w-full bg-gray-800 text-gray-400 p-2 rounded-xl border border-gray-700 focus:border-[#0d66b5] outline-none">
             </div>
 
             <div>
@@ -38,7 +38,7 @@
                        name="type"
                        value="{{ old('type', $page->type ?? '') }}"
                        placeholder="page type"
-                       class="mt-2 w-full bg-gray-800 text-gray-400 p-2 rounded-xl border border-gray-700 focus:border-orange-500 outline-none">
+                       class="mt-2 w-full bg-gray-800 text-gray-400 p-2 rounded-xl border border-gray-700 focus:border-[#0d66b5] outline-none">
             </div>
 
         </div>
@@ -52,7 +52,7 @@
                        name="title_en"
                        value="{{ old('title_en', $page->title_en ?? '') }}"
                        placeholder="Page title"
-                       class="mt-2 w-full bg-gray-800 text-gray-400 p-2 rounded-xl border border-gray-700 focus:border-orange-500 outline-none">
+                       class="mt-2 w-full bg-gray-800 text-gray-400 p-2 rounded-xl border border-gray-700 focus:border-[#0d66b5] outline-none">
             </div>
 
             <div>
@@ -61,7 +61,7 @@
                        name="subtitle_en"
                        value="{{ old('subtitle_en', $page->subtitle_en ?? '') }}"
                        placeholder="Page subtitle"
-                       class="mt-2 w-full bg-gray-800 text-gray-400 p-2 rounded-xl border border-gray-700 focus:border-orange-500 outline-none">
+                       class="mt-2 w-full bg-gray-800 text-gray-400 p-2 rounded-xl border border-gray-700 focus:border-[#0d66b5] outline-none">
             </div>
 
         </div>
@@ -73,14 +73,14 @@
                 <label class="text-xs text-gray-400">Content</label>
                 <textarea name="content_en"
                           placeholder="Page content..."
-                          class="mt-2 w-full bg-gray-800 text-gray-400 p-2 rounded-xl border border-gray-700 focus:border-orange-500 outline-none">{{ old('content_en', $page->content_en ?? '') }}</textarea>
+                          class="mt-2 w-full bg-gray-800 text-gray-400 p-2 rounded-xl border border-gray-700 focus:border-[#0d66b5] outline-none">{{ old('content_en', $page->content_en ?? '') }}</textarea>
             </div>
 
             <div>
                 <label class="text-xs text-gray-400">Status</label>
 
                 <select name="is_active"
-                        class="mt-2 w-full bg-gray-800 text-gray-400 p-5 rounded-xl border border-gray-700 focus:border-orange-500 outline-none">
+                        class="mt-2 w-full bg-gray-800 text-gray-400 p-5 rounded-xl border border-gray-700 focus:border-[#0d66b5] outline-none">
 
                     <option value="1" {{ (isset($page) && $page->is_active) ? 'selected' : '' }}>Active</option>
                     <option value="0" {{ (isset($page) && !$page->is_active) ? 'selected' : '' }}>Inactive</option>
@@ -99,7 +99,7 @@
                        name="meta_title"
                        value="{{ old('meta_title', $page->meta_title ?? '') }}"
                        placeholder="SEO title"
-                       class="mt-2 w-full bg-gray-800 text-gray-400 p-2 rounded-xl border border-gray-700 focus:border-orange-500 outline-none">
+                       class="mt-2 w-full bg-gray-800 text-gray-400 p-2 rounded-xl border border-gray-700 focus:border-[#0d66b5] outline-none">
             </div>
 
             <div>
@@ -108,7 +108,7 @@
                        name="meta_keywords"
                        value="{{ old('meta_keywords', $page->meta_keywords ?? '') }}"
                        placeholder="keyword1, keyword2"
-                       class="mt-2 w-full bg-gray-800 text-gray-400 p-2 rounded-xl border border-gray-700 focus:border-orange-500 outline-none">
+                       class="mt-2 w-full bg-gray-800 text-gray-400 p-2 rounded-xl border border-gray-700 focus:border-[#0d66b5] outline-none">
             </div>
 
         </div>
@@ -118,7 +118,7 @@
             <label class="text-xs text-gray-400">Meta Description</label>
             <textarea name="meta_description"
                       placeholder="SEO description..."
-                      class="mt-2 w-full bg-gray-800 text-gray-400 p-2 rounded-xl border border-gray-700 focus:border-orange-500 outline-none">{{ old('meta_description', $page->meta_description ?? '') }}</textarea>
+                      class="mt-2 w-full bg-gray-800 text-gray-400 p-2 rounded-xl border border-gray-700 focus:border-[#0d66b5] outline-none">{{ old('meta_description', $page->meta_description ?? '') }}</textarea>
         </div>
 
         {{-- IMAGE --}}
@@ -143,7 +143,7 @@
                 Cancel
             </a>
 
-            <button class="px-5 py-2 bg-orange-500 text-white rounded-xl hover:bg-orange-600">
+            <button class="px-5 py-2 bg-[#0d66b5] text-white rounded-xl hover:bg-[#0a4f97]">
                 {{ isset($page) ? 'Update Page' : 'Create Page' }}
             </button>
 

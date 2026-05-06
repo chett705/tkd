@@ -1,4 +1,4 @@
-@extends('backend.layout.app')
+﻿@extends('backend.layout.app')
 
 @section('title', 'Message Detail')
 @section('page-title', 'Message Detail')
@@ -77,7 +77,7 @@
 
         <a href="{{ url()->previous() }}"
            class="px-5 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-900 transition">
-            ← Back
+            Back
         </a>
 
         <div class="space-x-2">

@@ -1,4 +1,4 @@
-@extends('backend.layout.app')
+﻿@extends('backend.layout.app')
 
 @section('title', 'Page Sections')
 @section('page-title', 'Page Sections')
@@ -23,7 +23,7 @@
 
         <div class="text-sm text-gray-500">
             Page:
-            <span class="text-orange-400">
+            <span class="text-[#0d66b5]">
                 {{ $section->page }}
             </span>
         </div>
@@ -106,7 +106,7 @@
 
         {{-- EDIT --}}
         <a href="{{ route('admin.page-sections.edit', $section->id) }}"
-           class="px-4 py-2 bg-orange-500 text-white rounded-xl hover:bg-orange-600 transition">
+           class="px-4 py-2 bg-[#0d66b5] text-white rounded-xl hover:bg-[#0a4f97] transition">
             Edit
         </a>
 

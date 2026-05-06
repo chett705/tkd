@@ -1,4 +1,4 @@
-@extends('backend.layout.app')
+﻿@extends('backend.layout.app')
 
 @section('title', 'Group Menu')
 @section('page-title', 'Group Menu')
@@ -13,7 +13,7 @@
         <h1 class="text-white text-lg font-semibold">Menu Groups</h1>
 
         <a href="{{ route('admin.menu-groups.create') }}"
-           class="px-4 py-2 bg-orange-500 text-white rounded-xl hover:bg-orange-600">
+           class="px-4 py-2 bg-[#0d66b5] text-white rounded-xl hover:bg-[#0a4f97]">
             + Create Group
         </a>
     </div>

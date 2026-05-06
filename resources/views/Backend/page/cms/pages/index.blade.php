@@ -1,4 +1,4 @@
-@extends('backend.layout.app')
+﻿@extends('backend.layout.app')
 
 @section('title', 'Pages')
 @section('page-title', 'Pages')
@@ -11,7 +11,7 @@
     {{-- HEADER ACTION --}}
     <div class="flex justify-end">
         <a href="{{ route('admin.pages.create') }}"
-           class="px-4 py-2 bg-orange-500 text-white rounded-xl hover:bg-orange-600">
+           class="px-4 py-2 bg-[#0d66b5] text-white rounded-xl hover:bg-[#0a4f97]">
             + Create Page
         </a>
     </div>
@@ -42,7 +42,7 @@
                         <tr class="border-b border-gray-800 hover:bg-gray-800/40">
 
                             {{-- SLUG --}}
-                            <td class="px-4 py-3 text-orange-400 font-medium">
+                            <td class="px-4 py-3 text-[#0d66b5] font-medium">
                                 {{ $page->slug }}
                             </td>
 
@@ -89,7 +89,7 @@
                                 </a>
 
                                 <a href="{{ route('admin.pages.edit', $page->id) }}"
-                                   class="px-3 py-1 text-xs bg-orange-500/20 text-orange-400 rounded hover:bg-orange-500/30">
+                                   class="px-3 py-1 text-xs bg-[#0d66b5]/20 text-[#0d66b5] rounded hover:bg-[#0d66b5]/30">
                                     Edit
                                 </a>
 

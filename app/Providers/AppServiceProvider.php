@@ -30,6 +30,13 @@ class AppServiceProvider extends ServiceProvider
         Blade::anonymousComponentPath(resource_path('views/backend/components'));
         Schema::defaultStringLength(191);
 
+        View::composer('Backend.*', function ($view) {
+            $branding = Setting::where('group_name', 'led')->get()->keyBy('key_name');
+
+            $view->with('branding', $branding);
+            $view->with('logo', $branding['logo']->value_en ?? null);
+        });
+
         View::composer('Frontend.*', function ($view) {
             $view->with(
                 'contacts',

@@ -1,4 +1,4 @@
-@extends('backend.layout.app')
+﻿@extends('backend.layout.app')
 
 @section('title', 'Menus')
 @section('page-title', 'Menus')
@@ -21,7 +21,7 @@
                 </h2>
 
                 <a href="{{ route('admin.menus.create') }}?group={{ $group->id }}"
-                   class="text-xs px-3 rounded-xl py-1 bg-orange-500 text-white rounded hover:bg-orange-600">
+                   class="text-xs px-3 rounded-xl py-1 bg-[#0d66b5] text-white rounded hover:bg-[#0a4f97]">
                     + Add Menu
                 </a>
 

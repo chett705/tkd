@@ -13,12 +13,11 @@
 <a href="{{ $href }}"
    class="group flex items-center gap-3 mx-2 px-3 py-2 rounded-lg text-xs font-medium transition-all duration-150
           {{ $active
-              ? 'bg-orange-500/15 text-orange-400 border border-orange-500/20'
-              : 'text-gray-400 hover:text-gray-200 hover:bg-white/5' }}">
+              ? 'bg-white/12 text-white border border-white/20 shadow-[0_10px_24px_rgba(0,0,0,0.12)]'
+              : 'text-slate-200/78 hover:text-white hover:bg-white/7' }}">
 
-    {{-- Icon --}}
     @if($icon)
-    <span class="w-4 h-4 flex-shrink-0 {{ $active ? 'text-orange-400' : 'text-gray-500 group-hover:text-gray-300' }}">
+    <span class="w-4 h-4 flex-shrink-0 {{ $active ? 'text-[#ff566c]' : 'text-slate-300/55 group-hover:text-slate-100' }}">
         @if($icon === 'grid')
             <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="w-4 h-4"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
         @elseif($icon === 'star')
@@ -90,6 +89,6 @@
     <span class="truncate">{{ $slot }}</span>
 
     @if($active)
-        <span class="ml-auto w-1.5 h-1.5 rounded-full bg-orange-500 flex-shrink-0"></span>
+        <span class="ml-auto w-1.5 h-1.5 rounded-full bg-[#ff566c] flex-shrink-0"></span>
     @endif
 </a>

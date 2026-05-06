@@ -1,4 +1,4 @@
-@extends('backend.layout.app')
+﻿@extends('backend.layout.app')
 
 @section('title', 'Page Sections')
 @section('page-title', 'Page Sections')
@@ -22,7 +22,7 @@
                     <label class="text-xs text-gray-400">Page *</label>
 
                     <select id="pageSelect" name="page"
-                        class="w-full mt-2  bg-gray-800 text-gray-300 p-2 rounded-xl border border-gray-700 focus:border-orange-500 outline-none">
+                        class="w-full mt-2  bg-gray-800 text-gray-300 p-2 rounded-xl border border-gray-700 focus:border-[#0d66b5] outline-none">
 
                         <option value="">Select Page</option>
 
@@ -41,7 +41,7 @@
 
                     <input type="text" name="section_key" value="{{ old('section_key', $section->section_key) }}"
                         placeholder="hero, services, why-us"
-                        class="w-full mt-2  bg-gray-800 text-gray-300 p-2 rounded-xl border border-gray-700 focus:border-orange-500 outline-none">
+                        class="w-full mt-2  bg-gray-800 text-gray-300 p-2 rounded-xl border border-gray-700 focus:border-[#0d66b5] outline-none">
                 </div>
 
             </div>
@@ -50,18 +50,18 @@
             <div class="grid grid-cols-2 gap-4 mt-4 mb-4">
 
                 <input type="text" name="title_en" value="{{ old('title_en', $section->title_en) }}" placeholder="Title"
-                    class="w-full  bg-gray-800 text-gray-300 p-2 rounded-xl border border-gray-700 focus:border-orange-500 outline-none">
+                    class="w-full  bg-gray-800 text-gray-300 p-2 rounded-xl border border-gray-700 focus:border-[#0d66b5] outline-none">
 
                 <input type="text" name="subtitle_en" value="{{ old('subtitle_en', $section->subtitle_en) }}"
                     placeholder="Subtitle"
-                    class="w-full  bg-gray-800 text-gray-300 p-2 rounded-xl border border-gray-700 focus:border-orange-500 outline-none">
+                    class="w-full  bg-gray-800 text-gray-300 p-2 rounded-xl border border-gray-700 focus:border-[#0d66b5] outline-none">
 
             </div>
 
             {{-- DESCRIPTION --}}
             {{-- <div>
                 <textarea name="description_en"
-                    class="w-full  bg-gray-800 text-gray-300 p-2 rounded-xl border border-gray-700 focus:border-orange-500 outline-none"
+                    class="w-full  bg-gray-800 text-gray-300 p-2 rounded-xl border border-gray-700 focus:border-[#0d66b5] outline-none"
                     placeholder="Description">{{ old('description_en', $section->description_en) }}</textarea>
             </div> --}}
 
@@ -70,11 +70,11 @@
 
                 <input type="text" name="button_text_en" value="{{ old('button_text_en', $section->button_text_en) }}"
                     placeholder="Button Text"
-                    class="w-full  bg-gray-800 text-gray-300 p-2 rounded-xl border border-gray-700 focus:border-orange-500 outline-none">
+                    class="w-full  bg-gray-800 text-gray-300 p-2 rounded-xl border border-gray-700 focus:border-[#0d66b5] outline-none">
 
                 <input type="text" name="button_link_en" value="{{ old('button_link_en', $section->button_link_en) }}"
                     placeholder="Button Link"
-                    class="w-full  bg-gray-800 text-gray-300 p-2 rounded-xl border border-gray-700 focus:border-orange-500 outline-none">
+                    class="w-full  bg-gray-800 text-gray-300 p-2 rounded-xl border border-gray-700 focus:border-[#0d66b5] outline-none">
 
             </div>
 
@@ -83,11 +83,11 @@
 
                 <input type="text" name="button_text_km"
                     value="{{ old('button_text_km', $section->button_text_km) }}" placeholder="Button Text"
-                    class="w-full  bg-gray-800 text-gray-300 p-2 rounded-xl border border-gray-700 focus:border-orange-500 outline-none">
+                    class="w-full  bg-gray-800 text-gray-300 p-2 rounded-xl border border-gray-700 focus:border-[#0d66b5] outline-none">
 
                 <input type="text" name="button_link_km"
                     value="{{ old('button_link_km', $section->button_link_km) }}" placeholder="Button Link"
-                    class="w-full  bg-gray-800 text-gray-300 p-2 rounded-xl border border-gray-700 focus:border-orange-500 outline-none">
+                    class="w-full  bg-gray-800 text-gray-300 p-2 rounded-xl border border-gray-700 focus:border-[#0d66b5] outline-none">
 
             </div>
 
@@ -110,7 +110,7 @@
                     <label class="text-xs text-gray-400">Media Type</label>
 
                     <select name="media_type"
-                        class="w-full  bg-gray-800 text-gray-300 p-2 mt-2 rounded-xl border border-gray-700 focus:border-orange-500 outline-none">
+                        class="w-full  bg-gray-800 text-gray-300 p-2 mt-2 rounded-xl border border-gray-700 focus:border-[#0d66b5] outline-none">
 
                         <option value="">Select Media Type</option>
 
@@ -131,10 +131,10 @@
 
                 <input type="number" name="sort_order" value="{{ old('sort_order', $section->sort_order) }}"
                     placeholder="Sort Order"
-                    class="w-full  bg-gray-800 text-gray-300 p-2 rounded-xl border border-gray-700 focus:border-orange-500 outline-none">
+                    class="w-full  bg-gray-800 text-gray-300 p-2 rounded-xl border border-gray-700 focus:border-[#0d66b5] outline-none">
 
                 <select name="is_active"
-                    class="w-full  bg-gray-800 text-gray-300 p-2 rounded-xl border border-gray-700 focus:border-orange-500 outline-none">
+                    class="w-full  bg-gray-800 text-gray-300 p-2 rounded-xl border border-gray-700 focus:border-[#0d66b5] outline-none">
 
                     <option value="1" {{ $section->is_active ? 'selected' : '' }}>Active</option>
                     <option value="0" {{ !$section->is_active ? 'selected' : '' }}>Inactive</option>
@@ -151,7 +151,7 @@
                     Cancel
                 </a>
 
-                <button class="px-5 py-2 bg-orange-500 text-white rounded-xl hover:bg-orange-600">
+                <button class="px-5 py-2 bg-[#0d66b5] text-white rounded-xl hover:bg-[#0a4f97]">
                     Update Section
                 </button>
 
@@ -162,3 +162,4 @@
     </div>
 
 @endsection
+

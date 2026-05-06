@@ -1,4 +1,4 @@
-@extends('backend.layout.app')
+﻿@extends('backend.layout.app')
 
 @section('title', 'Create User')
 
@@ -17,27 +17,27 @@
         {{-- NAME --}}
         <input type="text" name="name" placeholder="Name"
                class="w-full p-3 bg-gray-800 text-gray-400 rounded-lg border border-gray-700
-                      focus:outline-none focus:border-orange-500 hover:border-gray-600 transition">
+                      focus:outline-none focus:border-[#0d66b5] hover:border-gray-600 transition">
 
         {{-- EMAIL --}}
         <input type="email" name="email" placeholder="Email"
                class="w-full p-3 bg-gray-800 text-gray-400 rounded-lg border border-gray-700
-                      focus:outline-none focus:border-orange-500 hover:border-gray-600 transition">
+                      focus:outline-none focus:border-[#0d66b5] hover:border-gray-600 transition">
 
         {{-- PASSWORD --}}
         <input type="password" name="password" placeholder="Password"
                class="w-full p-3 bg-gray-800 text-gray-400 rounded-lg border border-gray-700
-                      focus:outline-none focus:border-orange-500 hover:border-gray-600 transition">
+                      focus:outline-none focus:border-[#0d66b5] hover:border-gray-600 transition">
 
         {{-- CONFIRM PASSWORD --}}
         <input type="password" name="password_confirmation" placeholder="Confirm Password"
                class="w-full p-3 bg-gray-800 text-gray-400 rounded-lg border border-gray-700
-                      focus:outline-none focus:border-orange-500 hover:border-gray-600 transition">
+                      focus:outline-none focus:border-[#0d66b5] hover:border-gray-600 transition">
 
         {{-- ROLE --}}
         <select name="role"
                 class="w-full p-3 bg-gray-800 text-gray-400 rounded-lg border border-gray-700
-                       focus:outline-none focus:border-orange-500 hover:border-gray-600 transition">
+                       focus:outline-none focus:border-[#0d66b5] hover:border-gray-600 transition">
             <option value="user">User</option>
             <option value="admin">Admin</option>
         </select>
@@ -45,7 +45,7 @@
         {{-- STATUS --}}
         <select name="status"
                 class="w-full p-3 bg-gray-800 text-gray-400 rounded-lg border border-gray-700
-                       focus:outline-none focus:border-orange-500 hover:border-gray-600 transition">
+                       focus:outline-none focus:border-[#0d66b5] hover:border-gray-600 transition">
             <option value="active">Active</option>
             <option value="inactive">Inactive</option>
         </select>
@@ -62,8 +62,8 @@
 
             {{-- SUBMIT --}}
             <button type="submit"
-                    class=" px-4 py-3 bg-orange-500 text-gray-100 rounded-lg
-                           hover:bg-orange-600 transition font-medium">
+                    class=" px-4 py-3 bg-[#0d66b5] text-gray-100 rounded-lg
+                           hover:bg-[#0a4f97] transition font-medium">
                 Create User
             </button>
 

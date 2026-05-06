@@ -1,4 +1,4 @@
-@extends('backend.layout.app')
+﻿@extends('backend.layout.app')
 
 @section('title', 'Create Setting')
 @section('page-title', 'Create Setting')
@@ -23,7 +23,7 @@
                 <label class="text-xs text-gray-400">Group Name</label>
 
                 <select name="group_name"
-                        class="w-full mt-2 bg-gray-800 text-gray-400 p-2 rounded-xl border border-gray-700 focus:border-orange-500 outline-none">
+                        class="w-full mt-2 bg-gray-800 text-gray-400 p-2 rounded-xl border border-gray-700 focus:border-[#0d66b5] outline-none">
 
                     <option value="">Select Group</option>
 
@@ -41,7 +41,7 @@
                 <input type="text"
                        name="key_name"
                        placeholder="site_logo, phone, email..."
-                       class="w-full mt-2 bg-gray-800 text-gray-400 p-2 rounded-xl border border-gray-700 focus:border-orange-500 outline-none">
+                       class="w-full mt-2 bg-gray-800 text-gray-400 p-2 rounded-xl border border-gray-700 focus:border-[#0d66b5] outline-none">
             </div>
 
         </div>
@@ -54,7 +54,7 @@
                 <label class="text-xs text-gray-400">Type</label>
 
                 <select name="type"
-                        class="w-full mt-2 bg-gray-800 text-gray-400 p-2 rounded-xl border border-gray-700 focus:border-orange-500 outline-none">
+                        class="w-full mt-2 bg-gray-800 text-gray-400 p-2 rounded-xl border border-gray-700 focus:border-[#0d66b5] outline-none">
 
                     <option value="">Select Type</option>
 
@@ -72,7 +72,7 @@
                 <input type="number"
                        name="sort_order"
                        placeholder="0"
-                       class="w-full mt-2 bg-gray-800 text-gray-400 p-2 rounded-xl border border-gray-700 focus:border-orange-500 outline-none">
+                       class="w-full mt-2 bg-gray-800 text-gray-400 p-2 rounded-xl border border-gray-700 focus:border-[#0d66b5] outline-none">
             </div>
 
         </div>
@@ -86,14 +86,14 @@
                 <input type="text"
                     name="value_en"
                     placeholder="Setting value"
-                    class="w-full mt-2 bg-gray-800 text-gray-400 p-2 rounded-xl border border-gray-700 focus:border-orange-500 outline-none">
+                    class="w-full mt-2 bg-gray-800 text-gray-400 p-2 rounded-xl border border-gray-700 focus:border-[#0d66b5] outline-none">
             </div>
 
             <div>
                 <label class="text-xs text-gray-400">Status</label>
 
                 <select name="is_active"
-                        class="w-full mt-2 mb-4 bg-gray-800 text-gray-400 p-2 rounded-xl border border-gray-700 focus:border-orange-500 outline-none">
+                        class="w-full mt-2 mb-4 bg-gray-800 text-gray-400 p-2 rounded-xl border border-gray-700 focus:border-[#0d66b5] outline-none">
 
                     <option value="1">Active</option>
                     <option value="0">Inactive</option>
@@ -119,7 +119,7 @@
             <label class="text-xs text-gray-400">Status</label>
 
             <select name="is_active"
-                    class="w-full mt-2 mb-4 bg-gray-800 text-gray-400 p-2 rounded-xl border border-gray-700 focus:border-orange-500 outline-none">
+                    class="w-full mt-2 mb-4 bg-gray-800 text-gray-400 p-2 rounded-xl border border-gray-700 focus:border-[#0d66b5] outline-none">
 
                 <option value="1">Active</option>
                 <option value="0">Inactive</option>
@@ -135,7 +135,7 @@
                 Cancel
             </a>
 
-            <button class="px-5 py-2 bg-orange-500 text-white rounded-xl hover:bg-orange-600">
+            <button class="px-5 py-2 bg-[#0d66b5] text-white rounded-xl hover:bg-[#0a4f97]">
                 Create Setting
             </button>
 

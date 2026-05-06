@@ -1,4 +1,4 @@
-@extends('backend.layout.app')
+﻿@extends('backend.layout.app')
 
 @section('title', 'Page Detail')
 @section('page-title', 'Page Detail')
@@ -17,7 +17,7 @@
         </a>
 
         <a href="{{ route('admin.pages.edit', $page->id) }}"
-           class="px-4 py-2 bg-orange-500 text-white rounded-xl hover:bg-orange-600">
+           class="px-4 py-2 bg-[#0d66b5] text-white rounded-xl hover:bg-[#0a4f97]">
             Edit Page
         </a>
 
@@ -42,7 +42,7 @@
 
             <div>
                 <p class="text-gray-500">Slug</p>
-                <p class="text-orange-400">{{ $page->slug }}</p>
+                <p class="text-[#0d66b5]">{{ $page->slug }}</p>
             </div>
 
             <div>
@@ -75,14 +75,14 @@
                     prose-p:text-gray-400 prose-p:leading-relaxed
                     prose-li:text-gray-400
                     prose-strong:text-white
-                    prose-a:text-orange-400 prose-a:no-underline hover:prose-a:text-orange-300
-                    rounded-xl border border-white/5   p-6 sm:p-8">
+                    prose-a:text-[#0d66b5] prose-a:no-underline hover:prose-a:text-[#0a4f97]
+                    rounded-xl border border-slate-200   p-6 sm:p-8">
 
             {!! nl2br(e($page->content_en)) !!}
 
             </div>
         @else
-            <div class="rounded-xl border border-white/5 bg-[#1a222e] p-8 text-center text-sm text-gray-500">
+            <div class="rounded-xl border border-slate-200 bg-[#1a222e] p-8 text-center text-sm text-gray-500">
                 No content available.
             </div>
         @endif

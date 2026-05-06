@@ -1,4 +1,4 @@
-@extends('backend.layout.app')
+﻿@extends('backend.layout.app')
 
 @section('title', 'Create Page Section')
 @section('page-title', 'Create Page Section')
@@ -40,7 +40,7 @@
             <label class="text-xs text-gray-400">Section Key *</label>
             <input type="text"
                    name="section_key"
-                   class="w-full mt-2  bg-gray-800 text-gray-300 p-2 rounded-xl border border-gray-700 focus:border-orange-500 outline-none"
+                   class="w-full mt-2  bg-gray-800 text-gray-300 p-2 rounded-xl border border-gray-700 focus:border-[#0d66b5] outline-none"
                    placeholder="hero, services, why-us">
         </div>
 
@@ -52,12 +52,12 @@
         <input type="text"
                name="title_en"
                placeholder="Title"
-               class="w-full  bg-gray-800 text-gray-300 p-2 rounded-xl border border-gray-700 focus:border-orange-500 outline-none">
+               class="w-full  bg-gray-800 text-gray-300 p-2 rounded-xl border border-gray-700 focus:border-[#0d66b5] outline-none">
 
         <input type="text"
                name="subtitle_en"
                placeholder="Subtitle"
-               class="w-full  bg-gray-800 text-gray-300 p-2 rounded-xl border border-gray-700 focus:border-orange-500 outline-none">
+               class="w-full  bg-gray-800 text-gray-300 p-2 rounded-xl border border-gray-700 focus:border-[#0d66b5] outline-none">
 
     </div>
 
@@ -65,7 +65,7 @@
     {{-- <div class="mt-4">
         <textarea name="description_en"
                   placeholder="Description"
-                  class="w-full  bg-gray-800 text-gray-300 p-2 rounded-xl border border-gray-700 focus:border-orange-500 outline-none"></textarea>
+                  class="w-full  bg-gray-800 text-gray-300 p-2 rounded-xl border border-gray-700 focus:border-[#0d66b5] outline-none"></textarea>
     </div> --}}
 
     {{-- BUTTON --}}
@@ -74,12 +74,12 @@
         <input type="text"
                name="button_text_en"
                placeholder="Button Text"
-               class="w-full  bg-gray-800 text-gray-300 p-2 rounded-xl border border-gray-700 focus:border-orange-500 outline-none">
+               class="w-full  bg-gray-800 text-gray-300 p-2 rounded-xl border border-gray-700 focus:border-[#0d66b5] outline-none">
 
         <input type="text"
                name="button_link_en"
                placeholder="Button Link"
-               class="w-full  bg-gray-800 text-gray-300 p-2 rounded-xl border border-gray-700 focus:border-orange-500 outline-none">
+               class="w-full  bg-gray-800 text-gray-300 p-2 rounded-xl border border-gray-700 focus:border-[#0d66b5] outline-none">
 
     </div>
 
@@ -89,12 +89,12 @@
         <input type="text"
                name="button2_text_en"
                placeholder="Button Text"
-               class="w-full  bg-gray-800 text-gray-300 p-2 rounded-xl border border-gray-700 focus:border-orange-500 outline-none">
+               class="w-full  bg-gray-800 text-gray-300 p-2 rounded-xl border border-gray-700 focus:border-[#0d66b5] outline-none">
 
         <input type="text"
                name="button2_link_en"
                placeholder="Button Link"
-               class="w-full  bg-gray-800 text-gray-300 p-2 rounded-xl border border-gray-700 focus:border-orange-500 outline-none">
+               class="w-full  bg-gray-800 text-gray-300 p-2 rounded-xl border border-gray-700 focus:border-[#0d66b5] outline-none">
 
     </div>
 
@@ -110,7 +110,7 @@
     <div class="grid grid-cols-2 gap-4 mt-4">
 
         <select name="media_type"
-                class="w-full  bg-gray-800 text-gray-300 p-2 rounded-xl border border-gray-700 focus:border-orange-500 outline-none">
+                class="w-full  bg-gray-800 text-gray-300 p-2 rounded-xl border border-gray-700 focus:border-[#0d66b5] outline-none">
 
             <option value="">Select Media Type</option>
 
@@ -125,14 +125,14 @@
         <input type="number"
                name="sort_order"
                placeholder="Sort Order"
-               class="w-full  bg-gray-800 text-gray-300 p-2 rounded-xl border border-gray-700 focus:border-orange-500 outline-none">
+               class="w-full  bg-gray-800 text-gray-300 p-2 rounded-xl border border-gray-700 focus:border-[#0d66b5] outline-none">
 
     </div>
 
     {{-- STATUS --}}
     <div class="mt-4">
         <select name="is_active"
-                class="w-full  bg-gray-800 text-gray-300 p-2 rounded-xl border border-gray-700 focus:border-orange-500 outline-none">
+                class="w-full  bg-gray-800 text-gray-300 p-2 rounded-xl border border-gray-700 focus:border-[#0d66b5] outline-none">
             <option value="1">Active</option>
             <option value="0">Inactive</option>
         </select>
@@ -146,7 +146,7 @@
             Cancel
         </a>
 
-        <button class="px-5 py-2 bg-orange-500 text-white rounded-xl hover:bg-orange-600">
+        <button class="px-5 py-2 bg-[#0d66b5] text-white rounded-xl hover:bg-[#0a4f97]">
             Create Section
         </button>
 
@@ -157,3 +157,4 @@
 </div>
 
 @endsection
+

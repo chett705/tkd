@@ -1,4 +1,4 @@
-@extends('backend.layout.app')
+﻿@extends('backend.layout.app')
 
 @section('title', 'Users')
 @section('page-title', 'Users')
@@ -15,7 +15,7 @@
 
         {{-- ADD USER BUTTON --}}
         <a href="{{ route('admin.users.create') }}"
-           class="px-4 py-2 bg-orange-500 text-white rounded-lg text-sm hover:bg-orange-600">
+           class="px-4 py-2 bg-[#0d66b5] text-white rounded-lg text-sm hover:bg-[#0a4f97]">
             + Add User
         </a>
 
@@ -52,7 +52,7 @@
                         <td class="px-4 py-3">{{ $user->email }}</td>
 
                         <td class="px-4 py-3">
-                            <span class="px-2 py-1 text-xs rounded bg-orange-500/20 text-orange-400">
+                            <span class="px-2 py-1 text-xs rounded bg-[#0d66b5]/20 text-[#0d66b5]">
                                 {{ $user->role }}
                             </span>
                         </td>
@@ -110,3 +110,4 @@
 </div>
 
 @endsection
+

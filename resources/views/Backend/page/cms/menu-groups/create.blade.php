@@ -1,4 +1,4 @@
-@extends('backend.layout.app')
+﻿@extends('backend.layout.app')
 
 @section('title', isset($group) ? 'Edit Group Menu' : 'Create Group Menu')
 @section('page-title', isset($group) ? 'Edit Group Menu' : 'Create Group Menu')
@@ -85,7 +85,7 @@
                     </a>
 
                     <button type="submit"
-                        class="px-4 py-2 bg-orange-500 text-white rounded hover:bg-orange-600">
+                        class="px-4 py-2 bg-[#0d66b5] text-white rounded hover:bg-[#0a4f97]">
                         {{ isset($group) ? 'Update Group' : 'Create Group' }}
                     </button>
 

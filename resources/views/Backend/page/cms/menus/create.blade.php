@@ -1,4 +1,4 @@
-@extends('backend.layout.app')
+﻿@extends('backend.layout.app')
 
 @section('title', isset($menu) ? 'Edit Menu' : 'Create Menu')
 @section('page-title', isset($menu) ? 'Edit Menu' : 'Create Menu')
@@ -121,7 +121,7 @@
                     </a>
 
                     <button type="submit"
-                        class="px-4 py-2 bg-orange-500 text-white rounded hover:bg-orange-600">
+                        class="px-4 py-2 bg-[#0d66b5] text-white rounded hover:bg-[#0a4f97]">
                         {{ isset($menu) ? 'Update Menu' : 'Create Menu' }}
                     </button>
 

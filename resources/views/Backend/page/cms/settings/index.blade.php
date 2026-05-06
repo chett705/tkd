@@ -1,4 +1,4 @@
-@extends('backend.layout.app')
+﻿@extends('backend.layout.app')
 
 @section('title', 'Settings')
 @section('page-title', 'Settings')
@@ -18,7 +18,7 @@
 
             {{-- GROUP --}}
             <select name="group"
-                    class="bg-gray-800 text-gray-400 border border-gray-800 rounded-xl px-3 py-2 text-sm focus:border-orange-500 outline-none">
+                    class="bg-gray-800 text-gray-400 border border-gray-800 rounded-xl px-3 py-2 text-sm focus:border-[#0d66b5] outline-none">
                 <option value="">All Groups</option>
                 @foreach($allGroups as $group)
                     <option value="{{ $group }}" {{ request('group') == $group ? 'selected' : '' }}>
@@ -32,11 +32,11 @@
                    name="key"
                    value="{{ request('key') }}"
                    placeholder="Search key..."
-                   class="bg-gray-800 text-gray-400 border border-gray-800 rounded-xl px-3 py-2 text-sm focus:border-orange-500 outline-none">
+                   class="bg-gray-800 text-gray-400 border border-gray-800 rounded-xl px-3 py-2 text-sm focus:border-[#0d66b5] outline-none">
 
             {{-- TYPE --}}
             <select name="type"
-                    class="bg-gray-800 text-gray-400 border border-gray-800 rounded-xl px-3 py-2 text-sm focus:border-orange-500 outline-none">
+                    class="bg-gray-800 text-gray-400 border border-gray-800 rounded-xl px-3 py-2 text-sm focus:border-[#0d66b5] outline-none">
                 <option value="">All Types</option>
                 <option value="text" {{ request('type') == 'text' ? 'selected' : '' }}>Text</option>
                 <option value="image" {{ request('type') == 'image' ? 'selected' : '' }}>Image</option>
@@ -47,14 +47,14 @@
 
             {{-- STATUS --}}
             <select name="status"
-                    class="bg-gray-800 text-gray-400 border border-gray-800 rounded-xl px-3 py-2 text-sm focus:border-orange-500 outline-none">
+                    class="bg-gray-800 text-gray-400 border border-gray-800 rounded-xl px-3 py-2 text-sm focus:border-[#0d66b5] outline-none">
                 <option value="">All Status</option>
                 <option value="1" {{ request('status') == '1' ? 'selected' : '' }}>Active</option>
                 <option value="0" {{ request('status') == '0' ? 'selected' : '' }}>Inactive</option>
             </select>
 
             {{-- FILTER BUTTON --}}
-            <button class="bg-orange-500 text-white px-4 py-2 rounded-xl text-sm hover:bg-orange-600 transition">
+            <button class="bg-[#0d66b5] text-white px-4 py-2 rounded-xl text-sm hover:bg-[#0a4f97] transition">
                 Filter
             </button>
 
@@ -70,7 +70,7 @@
         <div class="flex items-center">
 
             <a href="{{ route('admin.settings.create') }}"
-               class="inline-flex items-center gap-2 bg-orange-500 text-white px-4 py-2 rounded-xl text-sm hover:bg-orange-600 transition">
+               class="inline-flex items-center gap-2 bg-[#0d66b5] text-white px-4 py-2 rounded-xl text-sm hover:bg-[#0a4f97] transition">
 
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2"
                      viewBox="0 0 24 24">
@@ -159,12 +159,12 @@
                                                        name="file"
                                                        accept="image/*"
                                                        onchange="previewImage(this, 'preview-{{ $setting->id }}')"
-                                                       class="text-sm text-gray-400 file:mr-3 file:py-1 file:px-3 file:rounded-xl file:border-0 file:bg-orange-500/20 file:text-orange-400 hover:file:bg-orange-500/30 cursor-pointer">
+                                                       class="text-sm text-gray-400 file:mr-3 file:py-1 file:px-3 file:rounded-xl file:border-0 file:bg-[#0d66b5]/20 file:text-[#0d66b5] hover:file:bg-[#0d66b5]/30 cursor-pointer">
                                             </label>
 
                                             {{-- PREVIEW --}}
                                             <img id="preview-{{ $setting->id }}"
-                                                 class="hidden h-14 w-auto max-w-[120px] rounded-xl border border-orange-500/40 object-contain bg-gray-800 p-1">
+                                                 class="hidden h-14 w-auto max-w-[120px] rounded-xl border border-[#0d66b5]/40 object-contain bg-gray-800 p-1">
 
                                         </div>
 
@@ -178,7 +178,7 @@
                                                form="form-{{ $setting->id }}"
                                                name="value_en"
                                                value="{{ $setting->value_en }}"
-                                               class="w-full bg-gray-800 text-gray-400 rounded-xl px-2 py-2 border border-gray-800 focus:border-orange-500 outline-none">
+                                               class="w-full bg-gray-800 text-gray-400 rounded-xl px-2 py-2 border border-gray-800 focus:border-[#0d66b5] outline-none">
                                     </td>
 
                                     {{-- VALUE KH --}}
@@ -187,7 +187,7 @@
                                                form="form-{{ $setting->id }}"
                                                name="value_km"
                                                value="{{ $setting->value_km }}"
-                                               class="w-full bg-gray-800 text-gray-400 rounded-xl px-2 py-2 border border-gray-800 focus:border-orange-500 outline-none">
+                                               class="w-full bg-gray-800 text-gray-400 rounded-xl px-2 py-2 border border-gray-800 focus:border-[#0d66b5] outline-none">
                                     </td>
 
                                 @endif
