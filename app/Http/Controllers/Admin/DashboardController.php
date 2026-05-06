@@ -50,6 +50,6 @@ class DashboardController extends Controller
             ->limit(5)
             ->get();
 
-        return view('backend.page.dashboard', compact('stats', 'sections', 'activities'));
+        return view('Backend.page.dashboard', compact('stats', 'sections', 'activities'));
     }
 }
