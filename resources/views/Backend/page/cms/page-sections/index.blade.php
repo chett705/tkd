@@ -1,4 +1,4 @@
-﻿@extends('backend.layout.app')
+@extends('Backend.layout.app')
 
 @section('title', 'Page Sections')
 @section('page-title', 'Page Sections')
@@ -196,7 +196,7 @@
                                         Delete
                                     </button>
 
-                                    @include('backend.components.destroy')
+                                    @include('Backend.components.destroy')
 
                                 </td>
 
@@ -217,3 +217,4 @@
 </div>
 
 @endsection
+

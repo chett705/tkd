@@ -121,10 +121,10 @@
     </div>
 
     <div class="flex min-h-screen">
-        @include('backend.components.sidebar')
+        @include('Backend.components.sidebar')
 
         <div class="flex flex-col flex-1 min-h-screen lg:ml-64">
-            @include('backend.components.header')
+            @include('Backend.components.header')
 
             <main class="backend-theme flex-1 p-4 sm:p-6 overflow-auto">
                 @if (session('success'))
@@ -147,7 +147,7 @@
                 @yield('content')
             </main>
 
-            @include('backend.components.footer')
+            @include('Backend.components.footer')
         </div>
     </div>
 
@@ -184,3 +184,4 @@
 </body>
 
 </html>
+

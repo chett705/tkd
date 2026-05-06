@@ -1,4 +1,4 @@
-﻿@extends('backend.layout.app')
+@extends('Backend.layout.app')
 
 @section('title', $page->meta_title ?? $page->title_en)
 @section('page-title', $page->title_en)
@@ -61,4 +61,5 @@
 </div>
 
 @endsection
+
 

@@ -1,4 +1,4 @@
-﻿@extends('backend.layout.app')
+@extends('Backend.layout.app')
 
 @section('title', 'Edit User')
 
@@ -80,3 +80,4 @@
 </div>
 
 @endsection
+

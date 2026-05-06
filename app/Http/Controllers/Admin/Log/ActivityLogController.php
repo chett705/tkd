@@ -16,14 +16,14 @@ class ActivityLogController extends Controller
     //         ->latest('created_at')
     //         ->paginate(30);
 
-    //     return view('backend.page.logs.index', compact('logs'));
+    //     return view('Backend.page.logs.index', compact('logs'));
     // }
 
     // public function show(string $id)
     // {
     //     $log = ActivityLog::with('user')->findOrFail($id);
 
-    //     return view('backend.page.logs.show', compact('log'));
+    //     return view('Backend.page.logs.show', compact('log'));
     // }
 
     public function destroy(string $id)
@@ -40,3 +40,4 @@ class ActivityLogController extends Controller
         return redirect()->route('admin.activity-logs.index')->with('success', 'All logs cleared.');
     }
 }
+

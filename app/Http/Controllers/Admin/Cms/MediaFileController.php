@@ -13,7 +13,7 @@ class MediaFileController extends Controller
     {
         $files = MediaFile::latest('uploaded_at')->paginate(30);
 
-        return view('backend.page.media-files.index', compact('files'));
+        return view('Backend.page.media-files.index', compact('files'));
     }
 
     public function store(Request $request)
@@ -50,7 +50,7 @@ class MediaFileController extends Controller
     {
         $file = MediaFile::findOrFail($id);
 
-        return view('backend.page.media-files.show', compact('file'));
+        return view('Backend.page.media-files.show', compact('file'));
     }
 
     public function destroy(string $id)
@@ -64,3 +64,4 @@ class MediaFileController extends Controller
         return redirect()->route('admin.media-files.index')->with('success', 'File deleted.');
     }
 }
+

@@ -1,4 +1,4 @@
-﻿@extends('backend.layout.app')
+@extends('Backend.layout.app')
 
 @section('title', 'Settings')
 @section('page-title', 'Settings')
@@ -235,7 +235,7 @@
 
     @endforeach
 
-   @include('backend.components.destroy')
+   @include('Backend.components.destroy')
 
 
 </div>
@@ -257,3 +257,4 @@ function previewImage(input, previewId) {
 </script>
 
 @endsection
+

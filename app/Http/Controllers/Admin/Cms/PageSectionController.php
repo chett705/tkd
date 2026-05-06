@@ -52,7 +52,7 @@ class PageSectionController extends Controller
             ->distinct()
             ->pluck('section_key');
 
-        return view('backend.page.cms.page-sections.index', compact(
+        return view('Backend.page.cms.page-sections.index', compact(
             'sections',
             'pages',
             'sectionKeys'
@@ -78,7 +78,7 @@ class PageSectionController extends Controller
             'youtube' => 'YouTube',
         ];
 
-        return view('backend.page.cms.page-sections.create', compact(
+        return view('Backend.page.cms.page-sections.create', compact(
             'pages',
             'mediaTypes'
         ));
@@ -124,7 +124,7 @@ class PageSectionController extends Controller
     {
          $section = PageSection::with('items')->findOrFail($id);
 
-        return view('backend.page.cms.page-sections.show', compact('section'));
+        return view('Backend.page.cms.page-sections.show', compact('section'));
     }
 
     public function edit(string $id)
@@ -139,7 +139,7 @@ class PageSectionController extends Controller
             'youtube' => 'YouTube',
         ];
 
-        return view('backend.page.cms.page-sections.update', compact(
+        return view('Backend.page.cms.page-sections.update', compact(
             'section',
             'pages',
             'mediaTypes'
@@ -200,3 +200,4 @@ class PageSectionController extends Controller
         return redirect()->route('admin.page-sections.index')->with('success', 'Section deleted.');
     }
 }
+

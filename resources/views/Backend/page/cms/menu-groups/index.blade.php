@@ -1,4 +1,4 @@
-﻿@extends('backend.layout.app')
+@extends('Backend.layout.app')
 
 @section('title', 'Group Menu')
 @section('page-title', 'Group Menu')
@@ -98,7 +98,7 @@
 
     </div>
         {{-- DELETE MODAL --}}
-        @include('backend.components.destroy')
+        @include('Backend.components.destroy')
             
 
     {{-- PAGINATION --}}
@@ -109,3 +109,4 @@
 </div>
 
 @endsection
+

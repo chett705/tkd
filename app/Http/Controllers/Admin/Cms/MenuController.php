@@ -15,14 +15,14 @@ class MenuController extends Controller
             $q->orderBy('sort_order');
         }])->orderBy('sort_order')->get();
 
-        return view('backend.page.cms.menus.index', compact('groups'));
+        return view('Backend.page.cms.menus.index', compact('groups'));
     }
 
     public function create()
     {
         $groups = MenuGroup::where('is_active', true)->orderBy('sort_order')->get();
 
-        return view('backend.page.cms.menus.create', compact('groups'));
+        return view('Backend.page.cms.menus.create', compact('groups'));
     }
 
     public function store(Request $request)
@@ -52,7 +52,7 @@ class MenuController extends Controller
     $menu = Menu::findOrFail($id);
     $groups = MenuGroup::where('is_active', true)->get();
 
-    return view('backend.page.cms.menus.create', compact('menu', 'groups'));
+    return view('Backend.page.cms.menus.create', compact('menu', 'groups'));
 }
 
  
@@ -97,3 +97,4 @@ public function update(Request $request, string $id)
         return redirect()->route('admin.menus.index')->with('success', 'Menu item deleted.');
     }
 }
+

@@ -1,4 +1,4 @@
-﻿@extends('backend.layout.app')
+@extends('Backend.layout.app')
 
 @section('title', 'Menus')
 @section('page-title', 'Menus')
@@ -112,8 +112,9 @@
 
     @endforeach
    {{-- DELETE MODAL --}}
-    @include('backend.components.destroy')
+    @include('Backend.components.destroy')
             
 </div>
 
 @endsection
+

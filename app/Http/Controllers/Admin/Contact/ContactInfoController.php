@@ -16,7 +16,7 @@ class ContactInfoController extends Controller
             $info = new ContactInfo();
         }
 
-        return view('backend.page.contact.contact-info.index', compact('info'));
+        return view('Backend.page.contact.contact-info.index', compact('info'));
     }
 
     public function storeOrUpdate(Request $request)
@@ -40,3 +40,4 @@ class ContactInfoController extends Controller
         return redirect()->back()->with('success', 'Contact info updated successfully.');
     }
 }
+

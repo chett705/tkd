@@ -1,4 +1,4 @@
-@extends('backend.layout.app')
+@extends('Backend.layout.app')
 
 @section('title', 'Update Section Item')
 @section('page-title', 'Update Section Item')
@@ -326,3 +326,4 @@
         }
     </style>
 @endpush
+

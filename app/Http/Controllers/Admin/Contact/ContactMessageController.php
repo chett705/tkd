@@ -12,7 +12,7 @@ class ContactMessageController extends Controller
     {
         $messages = ContactMessage::latest('created_at')->paginate(20);
 
-        return view('backend.page.contact.contact-messages.index', compact('messages'));
+        return view('Backend.page.contact.contact-messages.index', compact('messages'));
     }
 
     public function show(string $id)
@@ -23,7 +23,7 @@ class ContactMessageController extends Controller
             $message->update(['status' => 'read']);
         }
 
-        return view('backend.page.contact.contact-messages.show', compact('message'));
+        return view('Backend.page.contact.contact-messages.show', compact('message'));
     }
 
     public function store(Request $request)
@@ -68,3 +68,4 @@ class ContactMessageController extends Controller
         return redirect()->route('admin.contact-messages.index')->with('success', 'Message deleted.');
     }
 }
+

@@ -14,12 +14,12 @@ class UserController extends Controller
     {
         $users = User::latest()->paginate(15);
 
-        return view('backend.page.auth.users.user', compact('users'));
+        return view('Backend.page.auth.users.user', compact('users'));
     }
 
     public function create()
     {
-        return view('backend.page.auth.users.create');
+        return view('Backend.page.auth.users.create');
     }
 
     public function store(Request $request)
@@ -45,7 +45,7 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
 
-        return view('backend.page.auth.users.edit', compact('user'));
+        return view('Backend.page.auth.users.edit', compact('user'));
     }
 
     public function update(Request $request, $id)
@@ -85,3 +85,4 @@ class UserController extends Controller
         return redirect()->route('admin.users.index')->with('success', 'User deleted.');
     }
 }
+

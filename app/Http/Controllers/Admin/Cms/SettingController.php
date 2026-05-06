@@ -47,7 +47,7 @@ class SettingController extends Controller
         // All groups for the filter dropdown (unfiltered)
         $allGroups = Setting::select('group_name')->distinct()->orderBy('group_name')->pluck('group_name');
 
-        return view('backend.page.cms.settings.index', compact('settings', 'allGroups'));
+        return view('Backend.page.cms.settings.index', compact('settings', 'allGroups'));
     }
 
     // ─────────────────────────────
@@ -133,7 +133,7 @@ class SettingController extends Controller
         'email'
     ];
 
-    return view('backend.page.cms.settings.create', compact('groups', 'types'));
+    return view('Backend.page.cms.settings.create', compact('groups', 'types'));
 }
 
     public function store(Request $request)
@@ -180,3 +180,4 @@ public function destroy(string $id)
         ->with('success', 'Setting deleted successfully.');
 }
 }
+

@@ -1,4 +1,4 @@
-﻿@extends('backend.layout.app')
+@extends('Backend.layout.app')
 
 @section('title', isset($menu) ? 'Edit Menu' : 'Create Menu')
 @section('page-title', isset($menu) ? 'Edit Menu' : 'Create Menu')
@@ -136,3 +136,4 @@
 </div>
 
 @endsection
+

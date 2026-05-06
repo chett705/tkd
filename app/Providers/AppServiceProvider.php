@@ -27,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Blade::anonymousComponentPath(resource_path('views/backend/components'));
+        Blade::anonymousComponentPath(resource_path('views/Backend/components'));
         Schema::defaultStringLength(191);
 
         View::composer('Backend.*', function ($view) {
@@ -50,3 +50,4 @@ class AppServiceProvider extends ServiceProvider
         });
     }
 }
+

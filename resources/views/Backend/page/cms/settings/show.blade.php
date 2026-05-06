@@ -1,4 +1,4 @@
-﻿@extends('backend.layout.app')
+@extends('Backend.layout.app')
 
 @section('title', 'Setting')
 @section('page-title', 'Setting')
@@ -14,3 +14,4 @@
 
 @endsection
  
+

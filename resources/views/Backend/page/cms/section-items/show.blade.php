@@ -1,4 +1,4 @@
-@extends('backend.layout.app')
+@extends('Backend.layout.app')
 
 @section('title', 'View Section Item')
 @section('page-title', 'Section Item Details')
@@ -182,3 +182,4 @@
     }
 </script>
 @endpush
+

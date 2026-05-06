@@ -1,4 +1,4 @@
-﻿@extends('backend.layout.app')
+@extends('Backend.layout.app')
 
 @section('title', 'Users')
 @section('page-title', 'Users')
@@ -100,7 +100,7 @@
     </div>
 
         {{-- DELETE MODAL --}}
-        @include('backend.components.destroy')
+        @include('Backend.components.destroy')
             
     {{-- PAGINATION --}}
     <div class="mt-4">
@@ -110,4 +110,5 @@
 </div>
 
 @endsection
+
 

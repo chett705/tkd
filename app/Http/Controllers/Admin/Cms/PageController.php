@@ -13,12 +13,12 @@ class PageController extends Controller
     {
         $pages = Page::latest()->paginate(20);
 
-        return view('backend.page.cms.pages.index', compact('pages'));
+        return view('Backend.page.cms.pages.index', compact('pages'));
     }
 
     public function create()
     {
-        return view('backend.page.cms.pages.create');
+        return view('Backend.page.cms.pages.create');
     }
 
     public function store(Request $request)
@@ -54,14 +54,14 @@ class PageController extends Controller
     {
         $page = Page::findOrFail($id);
 
-        return view('backend.page.cms.pages.show', compact('page'));
+        return view('Backend.page.cms.pages.show', compact('page'));
     }
 
     public function edit(string $id)
     {
         $page = Page::findOrFail($id);
 
-        return view('backend.page.cms.pages.create', compact('page'));
+        return view('Backend.page.cms.pages.create', compact('page'));
     }
 
     public function update(Request $request, string $id)
@@ -111,3 +111,4 @@ class PageController extends Controller
         return redirect()->route('admin.pages.index')->with('success', 'Page deleted.');
     }
 }
+

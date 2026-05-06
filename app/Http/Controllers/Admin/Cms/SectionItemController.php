@@ -52,13 +52,13 @@ class SectionItemController extends Controller
             ->distinct()
             ->pluck('section_key');
 
-        return view('backend.page.cms.section-items.index', compact('items', 'menuGroups', 'sections'));
+        return view('Backend.page.cms.section-items.index', compact('items', 'menuGroups', 'sections'));
     }
 
     public function show(string $id)
     {
         $item = SectionItem::findOrFail($id);
-        return view('backend.page.cms.section-items.show', compact('item'));
+        return view('Backend.page.cms.section-items.show', compact('item'));
     }
 
     public function create()
@@ -71,7 +71,7 @@ class SectionItemController extends Controller
             ->distinct()
             ->pluck('section_key');
 
-        return view('backend.page.cms.section-items.create', compact('pages', 'groups', 'sectionKeys'));
+        return view('Backend.page.cms.section-items.create', compact('pages', 'groups', 'sectionKeys'));
     }
 
     public function getGroups($id)
@@ -162,7 +162,7 @@ class SectionItemController extends Controller
             }
         }
 
-        return view('backend.page.cms.section-items.edit', compact('item', 'pages', 'groups'));
+        return view('Backend.page.cms.section-items.edit', compact('item', 'pages', 'groups'));
     }
 
     public function update(Request $request, string $id)
@@ -276,3 +276,4 @@ class SectionItemController extends Controller
             ->with('success', 'Item deleted.');
     }
 }
+

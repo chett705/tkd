@@ -12,12 +12,12 @@ class MenuGroupController extends Controller
     {
         $groups = MenuGroup::orderBy('sort_order')->paginate(20);
 
-        return view('backend.page.cms.menu-groups.index', compact('groups'));
+        return view('Backend.page.cms.menu-groups.index', compact('groups'));
     }
 
     public function create()
     {
-        return view('backend.page.cms.menu-groups.create');
+        return view('Backend.page.cms.menu-groups.create');
     }
 
     public function store(Request $request)
@@ -41,7 +41,7 @@ class MenuGroupController extends Controller
     {
         $group = MenuGroup::findOrFail($id);
 
-        return view('backend.page.cms.menu-groups.create', compact('group'));
+        return view('Backend.page.cms.menu-groups.create', compact('group'));
     }
 
     public function update(Request $request, string $id)
@@ -70,3 +70,4 @@ class MenuGroupController extends Controller
         return redirect()->route('admin.menu-groups.index')->with('success', 'Menu group deleted.');
     }
 }
+

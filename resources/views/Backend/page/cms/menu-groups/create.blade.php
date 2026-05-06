@@ -1,4 +1,4 @@
-﻿@extends('backend.layout.app')
+@extends('Backend.layout.app')
 
 @section('title', isset($group) ? 'Edit Group Menu' : 'Create Group Menu')
 @section('page-title', isset($group) ? 'Edit Group Menu' : 'Create Group Menu')
@@ -100,3 +100,4 @@
 </div>
 
 @endsection
+

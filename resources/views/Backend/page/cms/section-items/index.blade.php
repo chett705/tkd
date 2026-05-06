@@ -1,4 +1,4 @@
-@extends('backend.layout.app')
+@extends('Backend.layout.app')
 
 @section('title', 'Section Items')
 @section('page-title', 'Section Items')
@@ -144,7 +144,8 @@
         </div>
     @endforeach
 
-    @include('backend.components.destroy')
+    @include('Backend.components.destroy')
 </div>
 
 @endsection
+

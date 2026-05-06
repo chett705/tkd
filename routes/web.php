@@ -31,12 +31,12 @@ Route::post('/logout', [SessionController::class, 'destroy'])->name('logout');
 
 Route::get('/privacy-policy', function () {
     $page = \App\Models\Page::where('slug', 'privacy-policy')->firstOrFail();
-    return view('backend.page.privacy-policy', compact('page'));
+    return view('Backend.page.privacy-policy', compact('page'));
 })->name('privacy');
 
 Route::get('/terms-of-service', function () {
     $page = \App\Models\Page::where('slug', 'terms-of-service')->firstOrFail();
-    return view('backend.page.terms', compact('page'));
+    return view('Backend.page.terms', compact('page'));
 })->name('terms');
 
 // ================== Admin ==================
@@ -260,3 +260,4 @@ Route::get('/activities', function () {
 
     return view('Frontend.pages.Activities', compact('manufacturingName', 'manufacturingProcess', 'productionCapacity', 'manufacturingCapacity', 'impact', 'impactHead', 'impactCont', 'hero'));
 })->name('activities');
+

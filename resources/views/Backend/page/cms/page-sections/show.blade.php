@@ -1,4 +1,4 @@
-﻿@extends('backend.layout.app')
+@extends('Backend.layout.app')
 
 @section('title', 'Page Sections')
 @section('page-title', 'Page Sections')
@@ -115,3 +115,4 @@
 </div>
 
 @endsection
+

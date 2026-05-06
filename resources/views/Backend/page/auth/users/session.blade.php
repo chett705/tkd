@@ -1,4 +1,4 @@
-﻿@extends('backend.layout.app')
+@extends('Backend.layout.app')
 
 @section('title', 'Sessions')
 @section('page-title', 'User Sessions')
@@ -85,3 +85,4 @@
 </div>
 
 @endsection
+

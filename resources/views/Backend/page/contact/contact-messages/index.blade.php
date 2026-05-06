@@ -1,4 +1,4 @@
-﻿@extends('backend.layout.app')
+@extends('Backend.layout.app')
 
 @section('title', 'Contact Messages')
 @section('page-title', 'Contact Messages')
@@ -75,3 +75,4 @@
 </div>
 
 @endsection
+
