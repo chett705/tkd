@@ -1,74 +1,78 @@
 @extends('Frontend.layouts.Main')
 
 @section('content')
-{{-- hero section --}}
-<div class="h-[93vh] bg-cover bg-center text-white relative"
-    style="background-image: url('https://wp-themes.com/wp-content/themes/production-factory/assets/images/banner-image.png');">
+  {{-- hero section --}}
+    <div class="h-[93vh] bg-cover bg-center bg-no-repeat text-white relative"
+        style="background-image: url('{{ asset('storage/' . $hero->media_url) }}');">
 
-    <div class="absolute inset-0 bg-black/40"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-[#050530]/70 via-[#050530]/35 to-black/10"></div>
 
-    <!-- RED STRIP -->
-    <div class="absolute bottom-0 right-0 w-full lg:w-8/10 overflow-hidden">
+        <!-- RED STRIP -->
+        <div class="absolute bottom-0 right-0 w-full lg:w-8/10 overflow-hidden">
 
-        <div class="absolute inset-0 bg-[#ED1C24]
+            <div class="absolute inset-0 bg-[#ED1C24]
         [clip-path:polygon(10%_0,100%_0,100%_100%,0_100%)]">
+            </div>
+
+            <div
+                class="relative z-10 px-5 md:pl-15 lg:pl-20 2xl:px-40 py-4 md:py-6 flex flex-col md:flex-row items-center justify-between gap-3 text-sm md:text-base">
+
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-phone text-black"></i>
+                    <p class="break-all">{{ $contacts['phone']->value_en ?? '' }}</p>
+                </div>
+
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-envelope text-black"></i>
+                    <p class="break-all">{{ $contacts['email']->value_en ?? '' }}</p>
+                </div>
+
+                <div class="flex items-center gap-2 text-center md:text-left">
+                    <i class="fa-solid fa-bullhorn text-black"></i>
+                    <p class="text-xs md:text-sm lg:text-base">
+                        {{ $contacts['description']->value_en ?? '' }}
+                    </p>
+                </div>
+
+            </div>
         </div>
 
-        <div
-            class="relative z-10 px-5 md:pl-15 lg:pl-20 2xl:px-40 py-4 md:py-6 flex flex-col md:flex-row items-center justify-between gap-3 text-sm md:text-base">
+        <!-- HERO CONTENT -->
+        <div class="container mx-auto px-5 flex items-center h-full relative z-10">
+            <div class="w-full lg:w-1/2 flex flex-col gap-5 text-center md:text-left">
 
-            <div class="flex items-center gap-2">
-                <i class="fa-solid fa-phone text-black"></i>
-                <p class="break-all">+855 12 590 666</p>
-            </div>
-
-            <div class="flex items-center gap-2">
-                <i class="fa-solid fa-envelope text-black"></i>
-                <p class="break-all">tkd.manufacturing89@gmail.com</p>
-            </div>
-
-            <div class="flex items-center gap-2 text-center md:text-left">
-                <i class="fa-solid fa-bullhorn text-black"></i>
-                <p class="text-xs md:text-sm lg:text-base">
-                    Delivering Industrial Excellence with Every Product.
-                </p>
-            </div>
-
-        </div>
-    </div>
-
-    <!-- HERO CONTENT -->
-    <div class="container mx-auto px-5 flex items-center h-full relative z-10">
-        <div class="w-full lg:w-1/2 flex flex-col gap-5 text-center md:text-left">
-
-            <h2
-                class="text-xl sm:text-2xl md:text-4xl lg:text-[44px]
+                <h2
+                    class="text-xl sm:text-2xl md:text-4xl lg:text-[44px]
                        leading-snug md:leading-tight font-bold break-words">
-                Sustainable Rice-Flour Straws from Cambodia to the World
-            </h2>
+                    {{ $hero->title_en }}
+                </h2>
 
-            <p class="text-sm sm:text-base md:text-lg lg:text-[22px] leading-relaxed">
-                Eco-friendly, biodegradable, and durable alternatives to plastic straws.
-            </p>
+                <p class="text-sm sm:text-base md:text-lg lg:text-[22px] leading-relaxed">
+                    {{ $hero->subtitle_en }}
+                </p>
 
-            <!-- Buttons -->
-            <div class="flex flex-col sm:flex-row gap-3 w-full">
-                <a href=""
-                    class="w-full sm:w-auto px-6 py-3 border border-[#ED1C24]
-                          bg-white text-[#ED1C24] font-semibold text-center">
-                    Get a Quote
-                </a>
+                <!-- Buttons -->
+                <div class="flex flex-col sm:flex-row gap-3 w-full">
+                    @if ($hero->button_text_en)
+                        <a href={{ $hero->button_link_en }}
+                            class="w-full sm:w-auto px-6 py-3 border border-[#ED1C24]
+                          bg-white text-[#ED1C24] font-semibold text-center capitalize">
+                            {{ $hero->button_text_en }}
+                        </a>
+                    @endif
 
-                <a href=""
-                    class="w-full sm:w-auto px-6 py-3 border border-[#ED1C24]
-                          bg-white text-[#ED1C24] font-semibold text-center">
-                    View Products
-                </a>
+                    @if ($hero->button_text_km)
+                        <a href={{ $hero->button_link_km }}
+                            class="w-full sm:w-auto px-6 py-3 border border-[#ED1C24]
+                          bg-white text-[#ED1C24] font-semibold text-center capitalize">
+                            {{ $hero->button_text_km }}
+                        </a>
+                    @endif
+
+                </div>
             </div>
         </div>
     </div>
-</div>
-
 {{-- Who We Serve --}}
 <div class="mt-20 bg-[#0B0B54] py-16">
 
@@ -97,98 +101,63 @@
     </div>
 </div>
 
-{{-- main product --}}
-<div class="min-h-[60vh] px-6 py-40  ">
+    {{-- main product --}}
+    <div class="min-h-[60vh] px-6 py-40 bg-[#0B0B54] ">
 
-    <div class="container mx-auto px-4 sm:px-6 lg:px-10 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-10 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+            <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-3 sm:gap-4">
 
-            <!-- LEFT: 2 IMAGES -->
-            <div class="grid grid-rows-2 gap-4">
-                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-eXlyj9I5e2YDCeNauWU1_F-wkcC4bu7QGEaa5W74glPFho-Rk78WDf90It9LTt26ANHZ_DemR0zRCL4QW1uOhrwXYk0WmJcmFGalV_l6wnw_Ii5KXj22cBPDMqFcC86-SXIADjqGeF5SJUHogvgN3VrDXOgCwMeChKaSUJf3i_huaPDYg0E_ESoI2xLvB51C54sC9QJutHGaLQOqar5IeSZv6sUuMZh_hWfFnzDAxTnbAmR97Oc92p3NTOjyb6MZcc2V_N_aXmrD"
-                    class="w-full h-full object-cover rounded-lg shadow-lg" />
-
-                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-eXlyj9I5e2YDCeNauWU1_F-wkcC4bu7QGEaa5W74glPFho-Rk78WDf90It9LTt26ANHZ_DemR0zRCL4QW1uOhrwXYk0WmJcmFGalV_l6wnw_Ii5KXj22cBPDMqFcC86-SXIADjqGeF5SJUHogvgN3VrDXOgCwMeChKaSUJf3i_huaPDYg0E_ESoI2xLvB51C54sC9QJutHGaLQOqar5IeSZv6sUuMZh_hWfFnzDAxTnbAmR97Oc92p3NTOjyb6MZcc2V_N_aXmrD"
-                    class="w-full h-full object-cover rounded-lg shadow-lg" />
-            </div>
-
-            <!-- RIGHT: 1 BIG IMAGE -->
-            <div>
-                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-eXlyj9I5e2YDCeNauWU1_F-wkcC4bu7QGEaa5W74glPFho-Rk78WDf90It9LTt26ANHZ_DemR0zRCL4QW1uOhrwXYk0WmJcmFGalV_l6wnw_Ii5KXj22cBPDMqFcC86-SXIADjqGeF5SJUHogvgN3VrDXOgCwMeChKaSUJf3i_huaPDYg0E_ESoI2xLvB51C54sC9QJutHGaLQOqar5IeSZv6sUuMZh_hWfFnzDAxTnbAmR97Oc92p3NTOjyb6MZcc2V_N_aXmrD"
-                    class="w-full h-full object-cover rounded-lg shadow-lg" />
-            </div>
-
-        </div>
-        <!-- RIGHT CONTENT -->
-        <div class="flex flex-col gap-3 sm:gap-4 h-full">
-
-            <!-- TITLE -->
-            <h2 class="text-3xl md:text-4xl font-bold ">
-                Engineering Excellence: Rice-Flour Straws
-            </h2>
-
-            <!-- FEATURES GRID -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-
-                <div>
-                    <h4 class="font-bold text-sm  uppercase">Biodegradability</h4>
-                    <p class="">100% compostable in 90 days</p>
-                </div>
-
-                <div>
-                    <h4 class="font-bold text-sm  uppercase">Safety Standard</h4>
-                    <p class="">Food-grade, non-toxic polymer alternative</p>
-                </div>
-
-                <div>
-                    <h4 class="font-bold text-sm  uppercase">Performance</h4>
-                    <p class="">High structural integrity in hot/cold drinks</p>
-                </div>
-
-                <div>
-                    <h4 class="font-bold text-sm  uppercase">Sensory Profile</h4>
-                    <p class="">Neutral taste, no paper-like residue</p>
-                </div>
+                @if ($images && $images->images)
+                    @foreach ($images->images as $img)
+                        <img src="{{ asset('storage/' . $img) }}" class="w-full object-cover rounded-lg shadow-lg" />
+                    @endforeach
+                @endif
 
             </div>
+            <!-- RIGHT CONTENT -->
+            <div class="flex flex-col gap-8">
 
-            <!-- TECHNICAL BOX -->
-            <div class="border border-gray-200 bg-white p-6 rounded-lg shadow-sm">
+                <!-- TITLE -->
+                @if ($title)
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">
+                        {{ $title->title_en }}
+                    </h2>
+                @endif
 
-                <h3 class="font-bold text-[#0B0B54] mb-4 flex items-center gap-2">
-                    ⚙️ Technical Specifications
-                </h3>
+                <!-- FEATURES GRID -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
 
-                <div class="space-y-3 text-sm">
-
-                    <div class="flex justify-between">
-                        <span class="">Available Sizes</span>
-                        <span class="font-semibold">6mm / 8mm / 12mm (Jumbo)</span>
-                    </div>
-
-                    <div class="flex justify-between">
-                        <span class="">Natural Tones</span>
-                        <span class="font-semibold">White, Charcoal, Green, Brown</span>
-                    </div>
-
-                    <div class="flex justify-between">
-                        <span class="">Standard Length</span>
-                        <span class="font-semibold">200mm (Customizable)</span>
-                    </div>
-
-                    <div class="flex justify-between">
-                        <span class="">Packaging</span>
-                        <span class="font-semibold">Individual Wrap, Bulk, OEM</span>
-                    </div>
+                    @foreach ($sub as $item)
+                        <div>
+                            <h4 class="font-bold text-sm text-white uppercase">{{ $item->title_en }}</h4>
+                            <p class="text-white">{{ $item->description_en }}</p>
+                        </div>
+                    @endforeach
 
                 </div>
-            </div>
 
+                <!-- TECHNICAL BOX -->
+                <div class="border border-gray-200 bg-white p-6 rounded-lg shadow-sm">
+
+                    <h3 class="font-bold text-[#0B0B54] mb-4 flex items-center gap-2">
+                        ⚙️ Technical Specifications
+                    </h3>
+
+                    <div class="space-y-3 text-sm">
+
+                        @foreach ($technical as $item)
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">{{ $item->title_en }}</span>
+                                <span class="font-semibold">{{ $item->description_en }}</span>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
-</div>
-
 {{-- Strategic Manufacturing Advantages --}}
 <div class="mt-20 bg-[#0B0B54] py-20 text-white">
     <div class="max-w-7xl mx-auto px-6">
@@ -347,84 +316,60 @@
     </div>
 </section>
 
-{{-- Our Certifications --}}
-<div class="py-20 bg-[#0B0B54]">
-    <div class="container mx-auto px-4 text-center">
+{{-- certification --}}
+    <div class="py-20 bg-[#0B0B54]">
+        <div class="container mx-auto px-4 text-center">
 
-        <!-- TITLE -->
-        <h2 class="text-3xl font-bold mb-4 text-white">Our Certifications</h2>
-        <p class="mb-12 text-white">
-            We meet international standards to ensure quality and sustainability.
-        </p>
+            <!-- TITLE -->
+            <h2 class="text-3xl font-bold mb-4 text-white">Our Certifications</h2>
+            <p class="mb-12 text-white">
+                We meet international standards to ensure quality and sustainability.
+            </p>
 
-        <!-- GRID -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- GRID -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8">
 
-            <!-- ITEM -->
-            <div class="group">
-                <div class="bg-white rounded-lg overflow-hidden shadow-lg">
-                    <img src="{{ asset('images/ISO.jpg') }}"
-                        class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
-                </div>
-                <p class="mt-3 font-semibold text-white">ISO Certified</p>
-            </div>
+                @foreach ($certificate as $item)
+                    <!-- ITEM -->
+                    <div class="group">
+                        <div class="bg-white rounded-lg overflow-hidden shadow-lg">
+                            <img src="{{ asset('storage/' . $item->image) }}" alt={{ $item->title_en }}
+                                class="w-full h-auto object-cover group-hover:scale-105 transition duration-300">
+                        </div>
+                        <p class="mt-3 font-semibold text-white">{{ $item->title_en }}</p>
+                    </div>
+                @endforeach
 
-            <!-- ITEM -->
-            <div class="group">
-                <div class="bg-white rounded-lg overflow-hidden shadow-lg">
-                    <img src="{{ asset('images/HACCP.jpg') }}"
-                        class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
-                </div>
-                <p class="mt-3 font-semibold text-white">HACCP</p>
-            </div>
-
-            <!-- ITEM -->
-            <div class="group">
-                <div class="bg-white rounded-lg overflow-hidden shadow-lg">
-                    <img src="{{ asset('images/MOC.jpg') }}"
-                        class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
-                </div>
-                <p class="mt-3 font-semibold text-white">Business Licenses</p>
-            </div>
-
-            <!-- ITEM -->
-            <div class="group">
-                <div class="bg-white rounded-lg overflow-hidden shadow-lg">
-                    <img src="{{ asset('images/Tax.jpg') }}"
-                        class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
-                </div>
-                <p class="mt-3 font-semibold text-white">Tax Compliance</p>
             </div>
 
         </div>
-
     </div>
-</div>
 
 {{-- Complex Gallery Section --}}
 <section class="py-20 ">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <!-- TITLE -->
-       
+
         <div class="text-center mb-10">
             <h2 class="text-3xl font-bold text-[#0B0B54]">Gallery</h2>
             <p class="text-gray-600 mt-2">Structured visual showcase of our work</p>
         </div>
-   
+
 
         <!-- COMPLEX GRID -->
         <div class="grid grid-cols-2 md:grid-cols-6 gap-4 auto-rows-[140px]">
-            
 
 
-            @foreach (json_decode($gallery->images ?? '[]', true) as $image)
+
+
+            @foreach (($gallery->images ?? []) as $image)
             <img src="{{ asset('storage/' . $image) }}"
                 class="w-full h-full object-cover rounded-lg shadow-md">
             @endforeach
 
 
-            
+
         </div>
 
     </div>
