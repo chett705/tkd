@@ -14,7 +14,7 @@ class SessionController extends Controller
             return redirect()->route('admin.dashboard');
         }
 
-        return view('backend.page.auth.login');
+        return view('Backend.page.auth.login');
     }
 
     public function store(Request $request)
