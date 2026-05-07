@@ -17,13 +17,13 @@ $ctaButtons = is_array($decodedButtons) ? $decodedButtons : [];
 
 <!-- HERO (keep but remove big blog title inside content area) -->
 <div class="relative h-[70vh] w-full flex items-center justify-center bg-cover bg-center"
-    style="background-image: url('https://wp-themes.com/wp-content/themes/production-factory/assets/images/banner-image.png');">
+    style="background-image: url('{{ asset('storage/' . $hero->media_url) }}');">
 
     <div class="absolute inset-0 bg-black/50"></div>
 
     <div class="relative z-10 text-center px-6">
         <p class="text-white text-lg md:text-2xl font-semibold">
-            Sustainable Alternatives for Modern Businesses
+            {{ $hero->title_en }}
         </p>
     </div>
 </div>

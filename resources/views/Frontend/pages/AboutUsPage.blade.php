@@ -1,21 +1,36 @@
 @extends('Frontend.layouts.Main')
 
 @section('content')
+    @php
+        $storageExists = fn($path) => filled($path) && \Illuminate\Support\Facades\Storage::disk('public')->exists($path);
+        $storageUrl = fn($path, $fallback = null) => $storageExists($path) ? asset('storage/' . $path) : $fallback;
+
+        $teamPlaceholder = "data:image/svg+xml;charset=UTF-8," . rawurlencode(
+            '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 720">'
+            . '<rect width="640" height="720" fill="#0B0B54"/>'
+            . '<circle cx="320" cy="240" r="110" fill="#ED1C24"/>'
+            . '<path d="M160 620c20-120 120-190 160-190s140 70 160 190" fill="#ffffff"/>'
+            . '<text x="320" y="685" font-size="34" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif">Team Photo</text>'
+            . '</svg>',
+        );
+
+        $heroBackground = $storageUrl(optional($hero)->media_url, asset('images/ISO.jpg'));
+        $tabs = $sub->map(function ($item) use ($storageUrl) {
+            return [
+                'title' => $item->title_en,
+                'icon' => $storageUrl($item->icon, asset('icons/values.png')),
+                'content' => $item->description_en,
+            ];
+        });
+    @endphp
+
     <div x-data="overviewTabs({
-        tabs: {{ Js::from(
-            $sub->map(function ($item) {
-                return [
-                    'title' => $item->title_en,
-                    'icon' => asset('storage/' . $item->icon),
-                    'content' => $item->description_en,
-                ];
-            }),
-        ) }}
+        tabs: {{ Js::from($tabs) }}
     })" class="relative">
 
         {{-- HERO SECTION --}}
         <div class="relative h-[93vh] bg-cover bg-center text-white"
-            style="background-image: url('{{ asset('storage/' . $hero->media_url) }}');">
+            style="background-image: url('{{ $heroBackground }}');">
 
             <div class="absolute inset-0 bg-black/40"></div>
 
@@ -26,25 +41,25 @@
                     <h2
                         class="text-xl sm:text-2xl md:text-4xl lg:text-[44px]
                        leading-snug md:leading-tight font-bold break-words">
-                        {{ $hero->title_en }}
+                        {{ $hero->title_en ?? 'About Us' }}
                     </h2>
 
                     <p class="text-sm sm:text-base md:text-lg lg:text-[22px] leading-relaxed">
-                        {{ $hero->subtitle_en }}
+                        {{ $hero->subtitle_en ?? '' }}
                     </p>
 
                     <!-- Buttons -->
                     <div class="flex flex-col sm:flex-row gap-3 w-full">
-                        @if ($hero->button_text_en)
-                            <a href={{ $hero->button_link_en }}
+                        @if (!empty($hero?->button_text_en))
+                            <a href="{{ $hero->button_link_en }}"
                                 class="w-full sm:w-auto px-6 py-3 border border-[#ED1C24]
                           bg-white text-[#ED1C24] font-semibold text-center capitalize">
                                 {{ $hero->button_text_en }}
                             </a>
                         @endif
 
-                        @if ($hero->button_text_km)
-                            <a href={{ $hero->button_link_km }}
+                        @if (!empty($hero?->button_text_km))
+                            <a href="{{ $hero->button_link_km }}"
                                 class="w-full sm:w-auto px-6 py-3 border border-[#ED1C24]
                           bg-white text-[#ED1C24] font-semibold text-center capitalize">
                                 {{ $hero->button_text_km }}
@@ -121,7 +136,7 @@
             @foreach ($team as $item)
                 <div class="p-3 flex flex-col gap-2 border border-gray-400 shadow-lg">
 
-                    <img src="{{ asset('storage/' . $item->image) }}" alt="{{ $item->title_en }}">
+                    <img src="{{ $storageUrl($item->image, $teamPlaceholder) }}" alt="{{ $item->title_en }}">
 
                     <div>
                         <p>{{ $item->title_en }}</p>
@@ -161,7 +176,7 @@
                     <!-- ITEM -->
                     <div class="group">
                         <div class="bg-white rounded-lg overflow-hidden shadow-lg">
-                            <img src="{{ asset('storage/' . $item->image) }}" alt={{ $item->title_en }}
+                            <img src="{{ $storageUrl($item->image, asset('images/ISO.jpg')) }}" alt="{{ $item->title_en }}"
                                 class="w-full h-auto object-cover group-hover:scale-105 transition duration-300">
                         </div>
                         <p class="mt-3 font-semibold text-white">{{ $item->title_en }}</p>

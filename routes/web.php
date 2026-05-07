@@ -108,79 +108,80 @@ Route::get('/', function () {
         ->limit(3)
         ->get();
 
-    $us = SectionItem::where('section_key','why-choose-us')
-            ->get();
+    $us = SectionItem::where('section_key', 'why-choose-us')
+        ->get();
 
-    $heroUs = PageSection::where('section_key','why-choose-us')
-            ->first();
+    $heroUs = PageSection::where('section_key', 'why-choose-us')
+        ->first();
 
-    $productQuantity = SectionItem::where('section_key','production-quantity')
-                        ->limit(8)
-                        ->get();
+    $productQuantity = SectionItem::where('section_key', 'production-quantity')
+        ->limit(8)
+        ->get();
 
-    $faq = SectionItem::where('section_key','faq')
-            ->limit(10)
-            ->get();
+    $faq = SectionItem::where('section_key', 'faq')
+        ->limit(10)
+        ->get();
 
-    $quote = SectionItem::where('section_key','quote')
-            ->first();
+    $quote = SectionItem::where('section_key', 'quote')
+        ->first();
 
-    return view('Frontend.pages.HomePage',compact('hero','contacts','products','us','heroUs','productQuantity','faq','quote'));
+    return view('Frontend.pages.HomePage', compact('hero', 'contacts', 'products', 'us', 'heroUs', 'productQuantity', 'faq', 'quote'));
 })->name('home');
-Route::get('/about-us',function(){
+Route::get('/about-us', function () {
 
-    $hero = PageSection::where('section_key','about-us')
-            ->first();
+    $hero = PageSection::where('section_key', 'about-us')
+        ->first();
 
-    $quote = SectionItem::where('section_key','quote')
-            ->where('page','about-us')
-            ->first();
+    $quote = SectionItem::where('section_key', 'quote')
+        ->where('page', 'about-us')
+        ->first();
 
-    $sub = SectionItem::where('section_key','sub')
-            ->where('group_title','sub-hero')
-            ->get();
+    $sub = SectionItem::where('section_key', 'sub')
+        ->where('page', 'about-us')
+        ->get();
 
 
-    $team = SectionItem::where('section_key','team')
-            ->get();
+    $team = SectionItem::where('section_key', 'team')
+        ->get();
 
-    $certificate = SectionItem::where('section_key','certificate')
-                    ->get();
+    $certificate = SectionItem::where('section_key', 'certificate')
+        ->get();
 
-    return view('Frontend.pages.AboutUsPage',compact('hero','quote','sub','team','certificate'));
+    return view('Frontend.pages.AboutUsPage', compact('hero', 'quote', 'sub', 'team', 'certificate'));
 })->name('about-us');
-Route::get('/our-trading-products',function(){
+Route::get('/our-trading-products', function () {
 
-    $hero = PageSection::where('section_key','home')
-            ->first();
+    $hero = PageSection::where('section_key', 'home')
+        ->first();
     $contacts = Setting::where('group_name', 'contact')->get()->keyBy('key_name');
 
-    $images = SectionItem::where('section_key','images')
-            ->first();
+    $images = SectionItem::where('section_key', 'images')
+        ->first();
 
     $title = SectionItem::where('section_key', 'title')
-            ->where('group_title', 'main')
-            ->first();
+        ->where('group_title', 'main')
+        ->first();
 
-    $sub = SectionItem::where('section_key','sub')
-            ->where('group_title','main')
-            ->limit(4)
-            ->get();
+    $sub = SectionItem::where('section_key', 'sub')
+        ->where('group_title', 'main')
+        ->limit(4)
+        ->get();
 
-    $technical = SectionItem::where('section_key','technical-specifications')
-                ->where('group_title','main')
-                ->limit(4)
-                ->get();
+    $technical = SectionItem::where('section_key', 'technical-specifications')
+        ->where('group_title', 'main')
+        ->limit(4)
+        ->get();
 
-    $products = SectionItem::where('section_key','product')
-                ->limit(3)
-                ->get();
+    $products = SectionItem::where('section_key', 'product')
+        ->limit(3)
+        ->get();
 
 
-    return view('Frontend.pages.ProductPage',compact('hero','contacts','images','title','sub','technical','products'));
+    return view('Frontend.pages.ProductPage', compact('hero', 'contacts', 'images', 'title', 'sub', 'technical', 'products'));
 })->name('products');
 Route::get('/export', function () {
-
+    $hero = PageSection::where('section_key', 'home')
+        ->first();
     $whoWeServe = SectionItem::where('section_key', 'who-we-serve')->get();
     $exportCapability = SectionItem::where('section_key', 'export-capability')->get();
     $exportLi = SectionItem::where('section_key', 'export-li')->get();
@@ -194,8 +195,25 @@ Route::get('/export', function () {
     $productionCont = SectionItem::where('section_key', 'production-cont')->get();
     $productionImg = SectionItem::where('section_key', 'production-img')->get();
     $moq = SectionItem::where('section_key', 'moq')->get();
-   $gallery = SectionItem::where('section_key', 'gallery')->first();
+    $gallery = SectionItem::where('section_key', 'gallery')->first();
 
+    $images = SectionItem::where('section_key', 'images')
+        ->first();
+
+    $title = SectionItem::where('section_key', 'title')
+        ->where('group_title', 'main')
+        ->first();
+
+    $sub = SectionItem::where('section_key', 'sub')
+        ->where('group_title', 'main')
+        ->limit(4)
+        ->get();
+    $technical = SectionItem::where('section_key', 'technical-specifications')
+        ->where('group_title', 'main')
+        ->limit(4)
+        ->get();
+    $certificate = SectionItem::where('section_key', 'certificate')
+        ->get();
     return view('Frontend.pages.Export', compact(
         'whoWeServe',
         'exportCapability',
@@ -207,21 +225,29 @@ Route::get('/export', function () {
         'productionCont',
         'productionImg',
         'moq',
-        'gallery'
+        'gallery',
+        'images',
+        'title',
+        'sub',
+        'technical',
+        'certificate',
+        'hero'
     ));
 })->name('export');
 Route::get('/blog', function () {
-
+    $hero = PageSection::where('section_key', 'home')
+        ->first();
     $comparison = SectionItem::where('section_key', 'comparison')->first();
     $conclusion = SectionItem::where('section_key', 'conclusion')->first();
     $qoute = SectionItem::where('section_key', 'quote')->first();
-    return view('Frontend.pages.Blogpaage', compact('comparison', 'conclusion', 'qoute'));
+    return view('Frontend.pages.Blogpaage', compact('comparison', 'conclusion', 'qoute', 'hero'));
 })->name('blog');
 Route::get('/contact-us', function () {
     return view('Frontend.pages.ContactUsPage');
 })->name('contact-us');
 Route::get('/activities', function () {
-
+    $hero = PageSection::where('section_key', 'home')
+        ->first();
     $manufacturingName = SectionItem::where('section_key', 'manufacturing-name')->get();
     $manufacturingProcess = SectionItem::where('section_key', 'manufacturing-process')->get();
     $productionCapacity = SectionItem::where('section_key', 'product-capacity')->first();
@@ -229,8 +255,8 @@ Route::get('/activities', function () {
 
 
     $impact = SectionItem::where('section_key', 'impact')->get();
-    $impactHead= SectionItem::where('section_key', 'impact-head')->get();
+    $impactHead = SectionItem::where('section_key', 'impact-head')->get();
     $impactCont = SectionItem::where('section_key', 'impact-cont')->get();
 
-    return view('Frontend.pages.Activities', compact('manufacturingName', 'manufacturingProcess', 'productionCapacity', 'manufacturingCapacity', 'impact', 'impactHead', 'impactCont'));
+    return view('Frontend.pages.Activities', compact('manufacturingName', 'manufacturingProcess', 'productionCapacity', 'manufacturingCapacity', 'impact', 'impactHead', 'impactCont', 'hero'));
 })->name('activities');

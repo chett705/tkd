@@ -2,72 +2,77 @@
 
 @section('content')
 {{-- hero section --}}
-<div class="min-h-[85vh] md:min-h-[93vh] bg-cover bg-center text-white relative"
-    style="background-image: url('https://wp-themes.com/wp-content/themes/production-factory/assets/images/banner-image.png');">
+<div class="h-[93vh] bg-cover bg-center text-white relative"
+        style="background-image: url('{{ asset('storage/' . $hero->media_url) }}');">
 
-    <div class="absolute inset-0 bg-black/40"></div>
+        <div class="absolute inset-0 bg-black/40"></div>
 
-    <!-- RED STRIP -->
-    <div class="absolute bottom-0 right-0 w-full lg:w-8/10 overflow-hidden">
+        <!-- RED STRIP -->
+        <div class="absolute bottom-0 right-0 w-full lg:w-8/10 overflow-hidden">
 
-        <div class="absolute inset-0 bg-[#ED1C24]
+            <div class="absolute inset-0 bg-[#ED1C24]
         [clip-path:polygon(10%_0,100%_0,100%_100%,0_100%)]">
+            </div>
+
+            <div
+                class="relative z-10 px-5 md:pl-15 lg:pl-20 2xl:px-40 py-4 md:py-6 flex flex-col md:flex-row items-center justify-between gap-3 text-sm md:text-base">
+
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-phone text-black"></i>
+                    <p class="break-all">{{ $contacts['phone']->value_en ?? '' }}</p>
+                </div>
+
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-envelope text-black"></i>
+                    <p class="break-all">{{ $contacts['email']->value_en ?? '' }}</p>
+                </div>
+
+                <div class="flex items-center gap-2 text-center md:text-left">
+                    <i class="fa-solid fa-bullhorn text-black"></i>
+                    <p class="text-xs md:text-sm lg:text-base">
+                        {{ $contacts['description']->value_en ?? '' }}
+                    </p>
+                </div>
+
+            </div>
         </div>
 
-        <div
-            class="relative z-10 px-4 sm:px-5 md:px-8 lg:px-16 2xl:px-40 py-4 md:py-6 flex flex-col md:flex-row items-center justify-between gap-3 text-sm md:text-base">
+        <!-- HERO CONTENT -->
+        <div class="container mx-auto px-5 flex items-center h-full relative z-10">
+            <div class="w-full lg:w-1/2 flex flex-col gap-5 text-center md:text-left">
 
-            <div class="flex items-center gap-2">
-                <i class="fa-solid fa-phone text-black"></i>
-                <p class="break-all">+855 12 590 666</p>
-            </div>
-
-            <div class="flex items-center gap-2">
-                <i class="fa-solid fa-envelope text-black"></i>
-                <p class="break-all">tkd.manufacturing89@gmail.com</p>
-            </div>
-
-            <div class="flex items-center gap-2 text-center md:text-left">
-                <i class="fa-solid fa-bullhorn text-black"></i>
-                <p class="text-xs md:text-sm lg:text-base">
-                    Delivering Industrial Excellence with Every Product.
-                </p>
-            </div>
-
-        </div>
-    </div>
-
-    <!-- HERO CONTENT -->
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center h-full relative z-10 py-20 md:py-24">
-        <div class="w-full lg:w-1/2 flex flex-col gap-4 md:gap-5 text-center md:text-left">
-
-            <h2
-                class="text-2xl sm:text-3xl md:text-4xl lg:text-[44px]
+                <h2
+                    class="text-xl sm:text-2xl md:text-4xl lg:text-[44px]
                        leading-snug md:leading-tight font-bold break-words">
-                Sustainable Rice-Flour Straws from Cambodia to the World
-            </h2>
+                    {{ $hero->title_en }}
+                </h2>
 
-            <p class="text-sm sm:text-base md:text-lg lg:text-[22px] leading-relaxed">
-                Eco-friendly, biodegradable, and durable alternatives to plastic straws.
-            </p>
+                <p class="text-sm sm:text-base md:text-lg lg:text-[22px] leading-relaxed">
+                    {{ $hero->subtitle_en }}
+                </p>
 
-            <!-- Buttons -->
-            <div class="flex flex-col sm:flex-row gap-3 w-full">
-                <a href=""
-                    class="w-full sm:w-auto px-6 py-3 border border-[#ED1C24]
-                          bg-white text-[#ED1C24] font-semibold text-center">
-                    Get a Quote
-                </a>
+                <!-- Buttons -->
+                <div class="flex flex-col sm:flex-row gap-3 w-full">
+                    @if ($hero->button_text_en)
+                        <a href={{ $hero->button_link_en }}
+                            class="w-full sm:w-auto px-6 py-3 border border-[#ED1C24]
+                          bg-white text-[#ED1C24] font-semibold text-center capitalize">
+                            {{ $hero->button_text_en }}
+                        </a>
+                    @endif
 
-                <a href=""
-                    class="w-full sm:w-auto px-6 py-3 border border-[#ED1C24]
-                          bg-white text-[#ED1C24] font-semibold text-center">
-                    View Products
-                </a>
+                    @if ($hero->button_text_km)
+                        <a href={{ $hero->button_link_km }}
+                            class="w-full sm:w-auto px-6 py-3 border border-[#ED1C24]
+                          bg-white text-[#ED1C24] font-semibold text-center capitalize">
+                            {{ $hero->button_text_km }}
+                        </a>
+                    @endif
+
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 
 {{-- Media & News similar  --}}
@@ -147,7 +152,7 @@
 
         <!-- RIGHT SIDE (IMAGES) -->
         <div class="w-full lg:w-1/2 flex flex-wrap justify-center gap-4 mt-2 lg:mt-0">
-            @foreach (json_decode($productionCapacity->images ?? '[]', true) as $image)
+            @foreach (($productionCapacity->images ?? []) as $image)
             <img 
                 src="{{ asset('storage/' . $image) }}"
                 class="w-full sm:w-[calc(50%-0.5rem)] lg:w-[calc(50%-0.5rem)] rounded-md object-cover h-48 sm:h-56 lg:h-48 xl:h-56"

@@ -1,3 +1,9 @@
+@php
+    $footerLogo = !empty($branding['logo']->value_en ?? null)
+        ? asset('storage/' . $branding['logo']->value_en)
+        : asset('images/logo.png');
+@endphp
+
 <div class=" pt-5 relative overflow-hidden mt-30">
 
     <!-- 🔵 GLOW (FIXED + PROPER ELLIPSE) -->
@@ -17,17 +23,17 @@
             {{-- left --}}
             <div>
                 <div class="flex items-center justify-center lg:justify-normal gap-3">
-                    <img src="{{ asset('images/logo.png') }}" class="w-[48px] h-[48px]">
+                    <img src="{{ $footerLogo }}" class="w-[48px] h-[48px]">
                     <div class="uppercase text-[22px]">
-                        <p class="font-bold">LED</p>
-                        <p>Events</p>
+                        <p class="font-bold">TK<span class=" text-[#ED1C24]">&</span>D
+                            
+                        </p>
+                        <!-- <p>Events</p> -->
                     </div>
                 </div>
 
                 <p class="mt-5 text-center lg:text-left">
-                    LED EVENTS aims to build a high-performance, SEO-driven website to generate qualified
-                    leads, build strong trust, support long-term content growth, position as a premium event
-                    production company, and support expansion to Southeast Asia.
+                    {{ $contacts['description']->value_en ?? '' }}
                 </p>
             </div>
 
@@ -58,17 +64,17 @@
                     <div class="flex flex-col mt-6 gap-5">
                         <p class="flex items-start gap-3 leading-relaxed">
                             <i class="fa-solid fa-location-dot mt-1"></i>
-                            #159A, Street 2011, Dei Thmey Village, Khmuonh Commune, Sen Sok District, Phnom Penh.
+                            {{ $contacts['address']->value_en ?? '' }}
                         </p>
 
                         <p class="flex items-center gap-3">
                             <i class="fa-solid fa-phone"></i>
-                            015 999 235
+                           {{ $contacts['phone']->value_en ?? '' }}
                         </p>
 
                         <p class="flex items-center gap-3 break-all">
                             <i class="fa-solid fa-envelope"></i>
-                            Info@ledevents.asia
+                            {{ $contacts['email']->value_en ?? '' }}
                         </p>
                     </div>
                 </div>
